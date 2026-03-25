@@ -6,3 +6,7 @@
 [BMW of Madison_6037244_Inventory Report_VIN_January26.pdf](https://github.com/user-attachments/files/26251852/BMW.of.Madison_6037244_Inventory.Report_VIN_January26.pdf)
 [BMW Cars Commerce Co-op Filing Instructions.docx](https://github.com/user-attachments/files/26252631/BMW.Cars.Commerce.Co-op.Filing.Instructions.docx)
 [MINI Cars Commerce Co-op Filing Instructions.docx](https://github.com/user-attachments/files/26252634/MINI.Cars.Commerce.Co-op.Filing.Instructions.docx)
+[Advertising Comparison MINI 2026.xlsx](https://github.com/user-attachments/files/26255713/Advertising.Comparison.MINI.2026.xlsx)
+[Advertising Comparison BMW 2026.xlsx](https://github.com/user-attachments/files/26255714/Advertising.Comparison.BMW.2026.xlsx)
+[MINI VAR.xlsx](https://github.com/user-attachments/files/26255715/MINI.VAR.xlsx)
+[MINI FIXED.xlsx](https://github.com/user-attachments/files/26255717/MINI.FIXED.xlsx)
