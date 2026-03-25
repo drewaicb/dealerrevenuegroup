@@ -36,13 +36,13 @@ nav {
   right: 0;
   z-index: 100;
   background: #ffffff;
-  padding: 0 2rem;
-  height: 116px;
+  padding: 0 2.5rem;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid rgba(30,77,123,0.12);
-  box-shadow: 0 2px 16px rgba(30,77,123,0.10);
+  border-bottom: 3px solid rgba(30,77,123,0.15);
+  box-shadow: 0 4px 20px rgba(30,77,123,0.12);
 }
 
 .nav-logo {
@@ -52,7 +52,7 @@ nav {
 }
 
 .nav-logo-img {
-  height: 102px;
+  height: 124px;
   width: auto;
 }
 
@@ -78,7 +78,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12rem 2rem 5rem;
+  padding: 14rem 2rem 5rem;
   position: relative;
   overflow: hidden;
 }
@@ -262,16 +262,20 @@ section {
 }
 
 .service-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--navy);
-  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  background: var(--navy-mid);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.75rem;
   margin-bottom: 1.25rem;
-  color: var(--gold);
+}
+
+.service-icon i {
+  color: var(--gold) !important;
+  font-size: 1.75rem;
 }
 
 .service-card h3 {
@@ -470,6 +474,6 @@ footer a { color: var(--gold); text-decoration: none; }
   .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
   .hero { padding: 7rem 1.5rem 4rem; }
   section { padding: 3.5rem 1.5rem; }
-  nav { padding: 0 1.25rem; height: 96px; }
-  .nav-logo-img { height: 80px; }
+  nav { padding: 0 1.5rem; height: 110px; }
+  .nav-logo-img { height: 96px; }
 }
