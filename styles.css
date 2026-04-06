@@ -1,20 +1,20 @@
 /* Dealer Revenue Group — styles.css */
 
 :root {
-  --navy:        #1E4D7B;
-  --navy-mid:    #2E6DA4;
-  --navy-light:  #4A8EC2;
-  --gold:        #C9A84C;
-  --gold-light:  #E8C97E;
+  --navy:        #0a1628;
+  --navy-mid:    #112240;
+  --navy-light:  #1d3461;
+  --gold:        #c9a84c;
+  --gold-light:  #e8c97e;
   --white:       #ffffff;
-  --off-white:   #f4f8fc;
-  --text:        #1E3A5F;
-  --text-muted:  #5A7A9A;
-  --border:      #d0e3f0;
+  --off-white:   #f4f6f9;
+  --text:        #2d3748;
+  --text-muted:  #718096;
+  --border:      #e2e8f0;
   --radius:      12px;
   --radius-sm:   8px;
-  --shadow:      0 4px 24px rgba(30,77,123,0.10);
-  --shadow-lg:   0 8px 48px rgba(30,77,123,0.18);
+  --shadow:      0 4px 24px rgba(10,22,40,0.10);
+  --shadow-lg:   0 8px 48px rgba(10,22,40,0.18);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,25 +35,42 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: #ffffff;
-  padding: 0 2.5rem;
-  height: 140px;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(10px);
+  padding: 0 2rem;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid rgba(30,77,123,0.15);
-  box-shadow: 0 4px 20px rgba(30,77,123,0.12);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
+  gap: .75rem;
   text-decoration: none;
 }
 
-.nav-logo-img {
-  height: 124px;
-  width: auto;
+.nav-logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: .95rem;
+  color: var(--navy);
+  letter-spacing: -.5px;
+}
+
+.nav-logo-text {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: .01em;
 }
 
 .nav-cta {
@@ -78,7 +95,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 14rem 2rem 5rem;
+  padding: 8rem 2rem 5rem;
   position: relative;
   overflow: hidden;
 }
@@ -199,8 +216,7 @@ nav {
   color: var(--text-muted);
 }
 
-.trust-item .icon { font-size: 1rem; color: var(--gold); }
-.contact-detail i { color: var(--navy-mid); font-size: 1rem; width: 1.2rem; text-align: center; }
+.trust-item .icon { font-size: 1.1rem; }
 
 /* ── SECTIONS ────────────────────────────── */
 section {
@@ -262,20 +278,15 @@ section {
 }
 
 .service-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--navy-mid);
-  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin-bottom: 1.25rem;
-}
-
-.service-icon i {
-  color: var(--gold) !important;
-  font-size: 1.75rem;
 }
 
 .service-card h3 {
@@ -474,6 +485,5 @@ footer a { color: var(--gold); text-decoration: none; }
   .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
   .hero { padding: 7rem 1.5rem 4rem; }
   section { padding: 3.5rem 1.5rem; }
-  nav { padding: 0 1.5rem; height: 110px; }
-  .nav-logo-img { height: 96px; }
+  nav { padding: 0 1.25rem; }
 }
