@@ -18,3 +18,6 @@
 [MINI VAR JAN.xlsx](https://github.com/user-attachments/files/26467199/MINI.VAR.JAN.xlsx)
 [BMW FIXED FEB.xlsx](https://github.com/user-attachments/files/26467198/BMW.FIXED.FEB.xlsx)
 s/26255717/MINI.FIXED.xlsx)
+[MINI_aftersales_2026_CoopGuidelines.pdf](https://github.com/user-attachments/files/26520005/MINI_aftersales_2026_CoopGuidelines.pdf)
+[BMW_New-CPO_Advertising_co-op_Guidelines_09_03_2025.pdf](https://github.com/user-attachments/files/26520006/BMW_New-CPO_Advertising_co-op_Guidelines_09_03_2025.pdf)
+[BMW_aftersales_2026_CoopGuidelines.pdf](https://github.com/user-attachments/files/26520009/BMW_aftersales_2026_CoopGuidelines.pdf)
