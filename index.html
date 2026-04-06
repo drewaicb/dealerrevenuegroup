@@ -162,7 +162,7 @@
         </div>
 
         <div class="contact-form">
-          <form name="contact" method="POST" action="#">
+          <form id="contact-form">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" placeholder="Jane Smith" required />
@@ -190,9 +190,54 @@
               <label for="message">Anything else we should know?</label>
               <textarea id="message" name="message" placeholder="Brands you carry, number of rooftops, current co-op challenges..."></textarea>
             </div>
-            <button type="submit" class="form-submit">Request My Free Review →</button>
+            <button type="submit" class="form-submit" id="form-submit-btn">Request My Free Review →</button>
+            <p id="form-error" style="display:none;color:#c0392b;margin-top:12px;font-size:14px;">
+              Something went wrong. Email us directly at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>.
+            </p>
           </form>
+          <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
+            <div style="font-size:48px;margin-bottom:16px;">✓</div>
+            <h3 style="color:#1E4D7B;margin:0 0 12px;">Got it — thanks!</h3>
+            <p style="color:#5A7A9A;margin:0;">We'll review your info and be in touch within one business day.</p>
+          </div>
         </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('form-submit-btn');
+      var errEl = document.getElementById('form-error');
+      errEl.style.display = 'none';
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      var data = {
+        name:       document.getElementById('name').value,
+        dealership: document.getElementById('dealership').value,
+        email:      document.getElementById('email').value,
+        service:    document.getElementById('service').value,
+        message:    document.getElementById('message').value,
+      };
+
+      try {
+        var res = await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          document.getElementById('contact-form').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          throw new Error('server');
+        }
+      } catch(err) {
+        btn.textContent = 'Request My Free Review →';
+        btn.disabled = false;
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
 
       </div>
     </div>
