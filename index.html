@@ -3,9 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dealer Revenue Group — Optimizing Factory Reimbursements to Drive Dealership Profitability</title>
-  <meta name="description" content="Dealer Revenue Group helps franchise car dealerships optimize OEM co-op funds, warranty rate reimbursements, and vendor spend. Built by car people with 35+ years automotive experience." />
+  <title>Dealer Revenue Group — OEM Co-op, Ad Tracking &amp; Deal Compliance for Franchise Dealers</title>
+  <meta name="description" content="Dealer Revenue Group helps franchise dealerships recover unclaimed OEM co-op funds, track advertising spend, and stay compliant on every out-of-state deal. Any brand. Any market." />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Coming Soon card ── */
+    .service-card.coming-soon {
+      position: relative;
+      opacity: .88;
+      border: 2px dashed #c9d8e8;
+      background: #f8fbff;
+    }
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: #1E4D7B;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+    }
+    .beta-badge {
+      display: inline-block;
+      background: #C9A84C;
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .15rem .45rem;
+      border-radius: 999px;
+      vertical-align: middle;
+      margin-left: .35rem;
+    }
+    .early-access-btn {
+      display: inline-block;
+      margin-top: 1.1rem;
+      background: transparent;
+      border: 2px solid #1E4D7B;
+      color: #1E4D7B;
+      font-size: .82rem;
+      font-weight: 700;
+      padding: .5rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .early-access-btn:hover {
+      background: #1E4D7B;
+      color: #fff;
+    }
+
+    /* ── OEM logo strip ── */
+    .oem-strip {
+      background: #fff;
+      border-top: 1px solid #d0e3f0;
+      border-bottom: 1px solid #d0e3f0;
+      padding: 1.1rem 1.5rem;
+      text-align: center;
+    }
+    .oem-strip-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #5A7A9A;
+      margin-bottom: .65rem;
+    }
+    .oem-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .45rem .6rem;
+    }
+    .oem-tag {
+      font-size: .8rem;
+      font-weight: 600;
+      color: #1E4D7B;
+      background: #ebf4ff;
+      border: 1px solid #bee3f8;
+      padding: .2rem .65rem;
+      border-radius: 999px;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,8 +106,8 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">Built by car people — 35+ years automotive experience</div>
-      <h1>Optimizing Factory Reimbursements<br><span>to Drive Dealership Profitability.</span></h1>
-      <p>DRG partners with franchise dealerships to maximize OEM co-op recovery, optimize warranty reimbursements, bring clarity to advertising spend, and keep your F&amp;I team compliant on every out-of-state deal — so your team can focus on selling cars.</p>
+      <h1>Recover What You're Owed.<br><span>Run Leaner. Stay Compliant.</span></h1>
+      <p>DRG partners with franchise dealerships of any brand to maximize OEM co-op recovery, bring real clarity to advertising and vendor spend, and keep your F&amp;I team clean on every out-of-state deal — so your team can focus on selling cars.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#contact">Schedule a Free Review</a>
         <a class="btn-outline" href="#services">See What We Do</a>
@@ -35,9 +120,32 @@
     <div class="trust-bar-inner">
       <div class="trust-item"><span class="icon">🏆</span> 35+ Years Automotive Experience</div>
       <div class="trust-item"><span class="icon">🎖️</span> 20+ Years General Manager Experience</div>
-      <div class="trust-item"><span class="icon">🔒</span> Secure Document Handling</div>
+      <div class="trust-item"><span class="icon">🚗</span> Any Franchise Brand</div>
       <div class="trust-item"><span class="icon">📅</span> 30-Day Rolling Contracts</div>
       <div class="trust-item"><span class="icon">⚡</span> Start in 5 Minutes</div>
+    </div>
+  </div>
+
+  <!-- ── OEM STRIP ─────────────────────────── -->
+  <div class="oem-strip">
+    <div class="oem-strip-label">OEM co-op expertise across all major brands</div>
+    <div class="oem-tags">
+      <span class="oem-tag">BMW</span>
+      <span class="oem-tag">MINI</span>
+      <span class="oem-tag">Mercedes-Benz</span>
+      <span class="oem-tag">Audi</span>
+      <span class="oem-tag">Volkswagen</span>
+      <span class="oem-tag">Toyota</span>
+      <span class="oem-tag">Honda</span>
+      <span class="oem-tag">Ford</span>
+      <span class="oem-tag">Chevrolet</span>
+      <span class="oem-tag">Cadillac</span>
+      <span class="oem-tag">Stellantis</span>
+      <span class="oem-tag">Hyundai</span>
+      <span class="oem-tag">Genesis</span>
+      <span class="oem-tag">Porsche</span>
+      <span class="oem-tag">Volvo</span>
+      <span class="oem-tag">+ more</span>
     </div>
   </div>
 
@@ -45,69 +153,76 @@
   <section id="services">
     <div class="section-inner">
       <div class="section-label">What We Do</div>
-      <h2 class="section-title">Four ways we grow<br>your bottom line</h2>
-      <p class="section-sub">We specialize in the revenue dealerships are already entitled to — but not fully capturing. No new programs. No gimmicks. Just expertise that protects your margins, strengthens your factory relationships, and keeps your deals compliant.</p>
+      <h2 class="section-title">Three ways we grow<br>your bottom line</h2>
+      <p class="section-sub">We specialize in the revenue dealerships are already entitled to — but not fully capturing. Any brand, any market. No new programs. No gimmicks. Just expertise that protects your margins and turns factory entitlements into real money.</p>
 
       <div class="services-grid">
 
-        <!-- Co-op -->
+        <!-- ── Co-op ── -->
         <div class="service-card">
           <div class="service-icon">📄</div>
           <h3>OEM Co-op Processing</h3>
-          <p>We handle your co-op claims end to end — from vendor document collection to OEM portal submission to follow-up on denials. You advertise. We get you paid.</p>
+          <p>We handle your co-op claims end to end — from vendor document collection to OEM portal submission to denial follow-up. You advertise. We get you paid. Works with every major OEM co-op program.</p>
           <ul class="service-features">
+            <li>Any brand — BMW, MINI, Mercedes, Toyota, Ford, GM &amp; more</li>
             <li>Pre-approval submissions (TV, radio, digital, events)</li>
-            <li>Direct vendor document collection — no chasing</li>
-            <li>BrandMaster and multi-OEM portal expertise</li>
+            <li>Direct vendor document collection — no chasing on your end</li>
+            <li>Multi-OEM portal expertise including Papirfly &amp; BrandMaster</li>
             <li>Monthly reporting and fund expiration alerts</li>
             <li>7-year audit-ready document storage</li>
-            <li>BMW, MINI, and expanding brand coverage</li>
           </ul>
         </div>
 
-        <!-- Warranty -->
-        <div class="service-card">
-          <div class="service-icon">🔧</div>
-          <h3>Warranty Rate Reimbursement</h3>
-          <p>Most dealers are under-reimbursed by the factory. Our experts analyze your repair order history against OEM and state-specific guidelines to build the strongest possible reimbursement submission — maximizing your labor rate and parts markup ask.</p>
-          <ul class="service-features">
-            <li>Deep analysis of your repair order history</li>
-            <li>OEM and state-specific guideline expertise</li>
-            <li>Optimized RO selection for maximum reimbursement</li>
-            <li>Multi-state and multi-brand compliance (BMW, MINI &amp; more)</li>
-            <li>Secure, PII-compliant customer data handling</li>
-            <li>Complete submission package prepared for you</li>
-          </ul>
-        </div>
-
-        <!-- Ad Spend -->
+        <!-- ── Ad Tracking ── -->
         <div class="service-card">
           <div class="service-icon">📊</div>
-          <h3>Advertising &amp; Vendor Spend Clarity</h3>
-          <p>Know exactly where every marketing dollar and vendor spend goes — by source, by department, by month. Back informed decisions, keep budgets top of mind, and stop guessing what's working.</p>
+          <h3>Ad Expense Tracking</h3>
+          <p>Know exactly where every marketing dollar goes — by vendor, by source, by department, by month. Stop guessing what's working. Back every budget decision with clean, current numbers.</p>
           <ul class="service-features">
-            <li>Spend tracking by source and department</li>
-            <li>Digital, traditional, and 3rd-party vendor visibility</li>
-            <li>New, CPO, service, and parts breakdown</li>
-            <li>Monthly reporting to back budget decisions</li>
-            <li>Co-op utilization rate tracking</li>
+            <li>All vendor spend in one place — digital, traditional, 3rd-party</li>
+            <li>Broken out by New, CPO, Service, and Parts</li>
+            <li>Co-op utilization rate and unclaimed balance tracking</li>
+            <li>Monthly report delivered directly to your team</li>
+            <li>DMS export integration (CDK, Reynolds &amp; Reynolds)</li>
             <li>Included free with co-op service</li>
           </ul>
         </div>
 
-        <!-- Out-of-State Deal Compliance -->
+        <!-- ── Title Tracker ── -->
         <div class="service-card">
           <div class="service-icon">🗺️</div>
-          <h3>Out-of-State Deal Compliance</h3>
-          <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our F&amp;I compliance tool delivers an instant, state-specific document checklist — so your team collects everything right the first time.</p>
+          <h3>Title Tracker <small style="font-size:.72rem;font-weight:500;color:#5A7A9A">Out-of-State Deal Compliance</small></h3>
+          <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our Title Tracker delivers an instant, state-specific checklist — so your F&amp;I team gets it right the first time, every time.</p>
           <ul class="service-features">
-            <li>Instant checklist by customer state, county, and deal type</li>
-            <li>Lease, finance, and cash — different docs, handled correctly</li>
-            <li>State-specific forms, taxes, and county surcharges surfaced automatically</li>
-            <li>Flags wheel tax, gas guzzler, EV surcharge, and other gotchas</li>
-            <li>Covers all 50 states — built and maintained by automotive experts</li>
-            <li>Used by F&amp;I managers, not lawyers — plain language, fast lookup</li>
+            <li>Instant checklist by customer state, county &amp; deal type</li>
+            <li>Lease, finance, and cash — every doc, every state</li>
+            <li>State taxes, county surcharges, and local fees surfaced automatically</li>
+            <li>Flags wheel tax, gas guzzler, EV surcharge &amp; other gotchas</li>
+            <li>Covers all 50 states — maintained by automotive operators</li>
+            <li>Built for F&amp;I managers — plain language, fast lookup</li>
           </ul>
+        </div>
+
+        <!-- ── Warranty — Coming Soon ── -->
+        <div class="service-card coming-soon">
+          <div class="coming-soon-badge">
+            Coming Soon
+            <span class="beta-badge">Beta</span>
+          </div>
+          <div class="service-icon">🔧</div>
+          <h3>Warranty Rate Reimbursement</h3>
+          <p>Most dealers are under-reimbursed by the factory. Our experts analyze your repair order history against OEM and state-specific franchise law to build the strongest possible rate submission — maximizing your labor rate and parts markup.</p>
+          <ul class="service-features">
+            <li>Repair order analysis against OEM &amp; state franchise guidelines</li>
+            <li>Optimized RO sample selection for maximum reimbursement</li>
+            <li>Multi-state, multi-brand compliance expertise</li>
+            <li>Secure, PII-compliant customer data handling</li>
+            <li>Complete submission package prepared for you</li>
+            <li>Labor rate &amp; parts markup — both covered</li>
+          </ul>
+          <a href="#contact" class="early-access-btn" onclick="document.getElementById('service').value='warranty_beta'">
+            Request Early Access →
+          </a>
         </div>
 
       </div>
@@ -119,13 +234,13 @@
     <div class="section-inner">
       <div class="section-label">Why DRG</div>
       <h2 class="section-title">We're not consultants.<br>We're operators.</h2>
-      <p class="section-sub">DRG was built by car people — over 35 years in the automotive industry, including 20+ years as a franchise General Manager. We've lived the co-op headaches, navigated factory audits, and know exactly where dealers leave money on the table every month.</p>
+      <p class="section-sub">DRG was built by car people — over 35 years in the automotive industry, including 20+ years as a franchise General Manager. We've lived the co-op headaches, navigated factory audits, dealt with out-of-state title nightmares, and know exactly where dealers leave money on the table every single month.</p>
 
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-number">20+</div>
-          <h4>Years of insider knowledge</h4>
-          <p>Built by a BMW/MINI General Manager. We know OEM systems, guidelines, and portals from the inside.</p>
+          <div class="why-number">Any</div>
+          <h4>Brand, any market</h4>
+          <p>We know OEM co-op programs across all major brands — domestic, import, luxury. If you have co-op funds, we can recover them.</p>
         </div>
         <div class="why-card">
           <div class="why-number">30</div>
@@ -135,12 +250,12 @@
         <div class="why-card">
           <div class="why-number">5</div>
           <h4>Minutes to get started</h4>
-          <p>Authorize our access in your OEM portal, send us your vendor contacts, and we handle the rest.</p>
+          <p>Authorize our portal access, send us your vendor contacts, and we handle the rest. No disruption to your team.</p>
         </div>
         <div class="why-card">
           <div class="why-number">$0</div>
           <h4>Burden on your staff</h4>
-          <p>We go directly to your vendors for invoices and documents. Your team focuses on selling cars.</p>
+          <p>We go directly to your vendors for invoices and documents. Your managers focus on what they do best — selling cars.</p>
         </div>
       </div>
     </div>
@@ -154,7 +269,7 @@
         <div class="contact-info">
           <div class="section-label">Get in Touch</div>
           <h3>Let's find out what you're leaving on the table.</h3>
-          <p>A free 30-minute review with our team will show you exactly how much co-op and warranty reimbursement your store has missed — with no obligation.</p>
+          <p>A free 30-minute review will show you exactly how much co-op your store has left unclaimed — with no obligation and no sales pressure.</p>
           <div class="contact-detail">📧 <span>info@dealerrevenuegroup.com</span></div>
           <div class="contact-detail">🌐 <span>dealerrevenuegroup.com</span></div>
           <div class="contact-detail">📅 <span>Available Mon–Fri, 8am–6pm CT</span></div>
@@ -168,26 +283,31 @@
             </div>
             <div class="form-group">
               <label for="dealership">Dealership Name</label>
-              <input type="text" id="dealership" name="dealership" placeholder="Smith BMW" required />
+              <input type="text" id="dealership" name="dealership" placeholder="Smith Chevrolet" required />
+            </div>
+            <div class="form-group">
+              <label for="oem">Brand(s) You Carry</label>
+              <input type="text" id="oem" name="oem" placeholder="e.g. BMW, Toyota, Ford…" />
             </div>
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@smithbmw.com" required />
+              <input type="email" id="email" name="email" placeholder="jane@smithchevrolet.com" required />
             </div>
             <div class="form-group">
-              <label for="service">I'm interested in...</label>
+              <label for="service">I'm interested in…</label>
               <select id="service" name="service">
                 <option value="">Select a service</option>
                 <option value="coop">Co-op Processing</option>
-                <option value="warranty">Warranty Rate Reimbursement</option>
-                <option value="compliance">Out-of-State Deal Compliance</option>
-                <option value="both">Multiple Services</option>
+                <option value="ad_tracking">Ad Expense Tracking</option>
+                <option value="title_tracker">Title Tracker — Out-of-State Compliance</option>
+                <option value="warranty_beta">Warranty Rate Reimbursement (Early Access)</option>
+                <option value="multiple">Multiple Services</option>
                 <option value="unsure">Not sure yet — tell me more</option>
               </select>
             </div>
             <div class="form-group">
               <label for="message">Anything else we should know?</label>
-              <textarea id="message" name="message" placeholder="Brands you carry, number of rooftops, current co-op challenges..."></textarea>
+              <textarea id="message" name="message" placeholder="Number of rooftops, current co-op challenges, states you sell into…"></textarea>
             </div>
             <button type="submit" class="form-submit" id="form-submit-btn">Request My Free Review →</button>
             <p id="form-error" style="display:none;color:#c0392b;margin-top:12px;font-size:14px;">
@@ -213,6 +333,7 @@
       var data = {
         name:       document.getElementById('name').value,
         dealership: document.getElementById('dealership').value,
+        oem:        document.getElementById('oem').value,
         email:      document.getElementById('email').value,
         service:    document.getElementById('service').value,
         message:    document.getElementById('message').value,
