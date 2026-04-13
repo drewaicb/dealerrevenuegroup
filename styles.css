@@ -73,6 +73,12 @@ nav {
   letter-spacing: .01em;
 }
 
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 .nav-cta {
   background: var(--gold);
   color: var(--navy);
