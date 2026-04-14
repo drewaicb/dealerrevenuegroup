@@ -59,6 +59,55 @@
       color: #fff;
     }
 
+    /* ── Warranty Lead Gen Qualifier ── */
+    .qualify-wrap {
+      margin-top: 1.1rem;
+      border-top: 1px solid #d0e3f0;
+      padding-top: 1rem;
+    }
+    .qualify-heading {
+      font-size: .82rem; font-weight: 700; color: #1E4D7B;
+      margin-bottom: .75rem; letter-spacing: .02em;
+    }
+    .qualify-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .6rem;
+      margin-bottom: .6rem;
+    }
+    @media (max-width: 560px) { .qualify-row { grid-template-columns: 1fr; } }
+    .qualify-field label {
+      display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .04em; color: #5A7A9A; margin-bottom: .25rem;
+    }
+    .qualify-field input, .qualify-field select {
+      width: 100%; padding: .42rem .65rem; font-size: .85rem;
+      border: 1px solid #c9d8e8; border-radius: 6px; color: #1a2d3d;
+      background: #fff; box-sizing: border-box;
+    }
+    .qualify-field input:focus, .qualify-field select:focus {
+      outline: none; border-color: #1E4D7B;
+    }
+    .qualify-pills {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem;
+    }
+    .qualify-pills button {
+      background: #fff; border: 1.5px solid #c9d8e8;
+      color: #1a2d3d; font-size: .78rem; font-weight: 600;
+      padding: .3rem .75rem; border-radius: 999px; cursor: pointer;
+      transition: all .15s;
+    }
+    .qualify-pills button:hover { border-color: #1E4D7B; color: #1E4D7B; }
+    .qualify-pills button.selected {
+      background: #1E4D7B; border-color: #1E4D7B; color: #fff;
+    }
+    #qualifyResult {
+      margin-top: .85rem; padding: .85rem 1rem;
+      border-radius: 8px; font-size: .85rem; line-height: 1.6;
+    }
+    #qualifyResult.good  { background: #f0fff4; border: 1px solid #9ae6b4; color: #276749; }
+    #qualifyResult.mid   { background: #fffbeb; border: 1px solid #f6e05e; color: #744210; }
+    #qualifyResult.low   { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
+    #qualifyResult.sent  { background: #ebf8ff; border: 1px solid #bee3f8; color: #1E4D7B; }
+
     /* ── OEM logo strip ── */
     .oem-strip {
       background: #fff;
@@ -184,16 +233,16 @@
             <li>Broken out by New, CPO, Service, and Parts</li>
             <li>Co-op utilization rate and unclaimed balance tracking</li>
             <li>Monthly report delivered directly to your team</li>
-            <li>DMS export integration (CDK, Reynolds &amp; Reynolds)</li>
+            <li>DMS export integration — works with all major DMS platforms</li>
             <li>Included free with co-op service</li>
           </ul>
         </div>
 
-        <!-- ── Title Tracker ── -->
+        <!-- ── Deal Tracker ── -->
         <div class="service-card">
           <div class="service-icon">🗺️</div>
-          <h3>Title Tracker <small style="font-size:.72rem;font-weight:500;color:#5A7A9A">Out-of-State Deal Compliance</small></h3>
-          <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our Title Tracker delivers an instant, state-specific checklist — so your F&amp;I team gets it right the first time, every time.</p>
+          <h3>Deal Tracker <small style="font-size:.72rem;font-weight:500;color:#5A7A9A">Out-of-State Deal Compliance</small></h3>
+          <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our Deal Tracker delivers an instant, state-specific checklist — so your F&amp;I team gets it right the first time, every time.</p>
           <ul class="service-features">
             <li>Instant checklist by customer state, county &amp; deal type</li>
             <li>Lease, finance, and cash — every doc, every state</li>
@@ -204,15 +253,30 @@
           </ul>
         </div>
 
-        <!-- ── Warranty — Coming Soon ── -->
-        <div class="service-card coming-soon">
+        <!-- ── Structure Deal ── -->
+        <div class="service-card">
+          <div class="service-icon">🧮</div>
+          <h3>Structure Deal</h3>
+          <p>Instant fee breakdown for any out-of-state deal — enter the customer's ZIP and get state tax, title fees, and temp tag validity in seconds. No more guessing what to collect at signing.</p>
+          <ul class="service-features">
+            <li>Enter customer ZIP — state auto-detected instantly</li>
+            <li>Cash, finance, and lease deal types supported</li>
+            <li>State tax rate + local county rate breakdown</li>
+            <li>Title fee, temp tag days, and estimated processing time</li>
+            <li>Surfaces gotchas — wheel tax, EV surcharge, OOS dealer flags</li>
+            <li>All 50 states, updated annually</li>
+          </ul>
+        </div>
+
+        <!-- ── Warranty ── -->
+        <div class="service-card coming-soon" id="warranty-card">
           <div class="coming-soon-badge">
             Coming Soon
             <span class="beta-badge">Beta</span>
           </div>
           <div class="service-icon">🔧</div>
-          <h3>Warranty Rate Reimbursement</h3>
-          <p>Most dealers are under-reimbursed by the factory. Our experts analyze your repair order history against OEM and state-specific franchise law to build the strongest possible rate submission — maximizing your labor rate and parts markup.</p>
+          <h3>Warranty Labor &amp; Parts Rate</h3>
+          <p>Most dealers are under-reimbursed by the factory. Our experts analyze your repair order history against OEM and your state's franchise law to build the strongest possible rate submission — maximizing your labor rate and parts markup.</p>
           <ul class="service-features">
             <li>Repair order analysis against OEM &amp; state franchise guidelines</li>
             <li>Optimized RO sample selection for maximum reimbursement</li>
@@ -221,9 +285,80 @@
             <li>Complete submission package prepared for you</li>
             <li>Labor rate &amp; parts markup — both covered</li>
           </ul>
-          <a href="#contact" class="early-access-btn" onclick="document.getElementById('service').value='warranty_beta'">
-            Request Early Access →
-          </a>
+
+          <!-- ── Lead Gen: Quick Qualifier ── -->
+          <div class="qualify-wrap" id="qualifyWrap">
+            <div class="qualify-heading">See if your store qualifies — 60 seconds</div>
+            <form id="qualifyForm">
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Brand(s) you carry</label>
+                  <input type="text" id="qBrand" placeholder="e.g. BMW, Toyota, Ford…" required>
+                </div>
+                <div class="qualify-field">
+                  <label>Your state</label>
+                  <select id="qState" required>
+                    <option value="">— State —</option>
+                    <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                    <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                    <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                    <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                    <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                    <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                    <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                    <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                    <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                    <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                    <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                    <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                    <option>WI</option><option>WY</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="qualify-field" style="margin-bottom:.75rem">
+                <label>When did you last submit for a warranty labor rate increase?</label>
+                <div class="qualify-pills" id="qLastSubmit">
+                  <button type="button" data-val="never">Never</button>
+                  <button type="button" data-val="5plus">5+ years ago</button>
+                  <button type="button" data-val="3to5">3–5 years ago</button>
+                  <button type="button" data-val="1to3">1–3 years ago</button>
+                  <button type="button" data-val="recent">Within past year</button>
+                </div>
+              </div>
+
+              <div class="qualify-field" style="margin-bottom:.75rem">
+                <label>Approx. monthly warranty repair orders</label>
+                <div class="qualify-pills" id="qROs">
+                  <button type="button" data-val="low">Under 50</button>
+                  <button type="button" data-val="mid">50–150</button>
+                  <button type="button" data-val="high">150–300</button>
+                  <button type="button" data-val="very_high">300+</button>
+                </div>
+              </div>
+
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Your name</label>
+                  <input type="text" id="qName" placeholder="Jane Smith" required>
+                </div>
+                <div class="qualify-field">
+                  <label>Dealership name</label>
+                  <input type="text" id="qDealership" placeholder="Smith BMW" required>
+                </div>
+              </div>
+              <div class="qualify-field" style="margin-bottom:.85rem">
+                <label>Email address</label>
+                <input type="email" id="qEmail" placeholder="jane@smithbmw.com" required>
+              </div>
+
+              <button type="submit" class="early-access-btn" style="width:100%;text-align:center">
+                Check My Rate →
+              </button>
+            </form>
+
+            <div id="qualifyResult" style="display:none"></div>
+          </div>
         </div>
 
       </div>
@@ -369,6 +504,98 @@
     <p>© 2026 Dealer Revenue Group, LLC &nbsp;·&nbsp; <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a> &nbsp;·&nbsp; dealerrevenuegroup.com</p>
     <p style="margin-top:.5rem;">OEMCo-op.com is a DRG service.</p>
   </footer>
+
+  <script>
+  // ── Warranty qualifier form ──────────────────────────────────────────────
+  (function(){
+    // Pill selectors
+    ['qLastSubmit','qROs'].forEach(function(groupId){
+      var group = document.getElementById(groupId);
+      if(!group) return;
+      group.querySelectorAll('button').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          group.querySelectorAll('button').forEach(function(b){ b.classList.remove('selected'); });
+          this.classList.add('selected');
+        });
+      });
+    });
+
+    function getSelected(groupId){
+      var group = document.getElementById(groupId);
+      if(!group) return null;
+      var sel = group.querySelector('button.selected');
+      return sel ? sel.getAttribute('data-val') : null;
+    }
+
+    function score(lastSubmit, ros){
+      // Good: never or 5+yr AND high volume
+      // Mid: 3-5yr OR moderate volume
+      // Low: submitted within past year (usually locked out)
+      if(lastSubmit === 'recent') return 'low';
+      if((lastSubmit === 'never' || lastSubmit === '5plus') && (ros === 'high' || ros === 'very_high')) return 'good';
+      if(lastSubmit === 'never' || lastSubmit === '5plus') return 'good';
+      if(lastSubmit === '3to5') return 'mid';
+      if(lastSubmit === '1to3') return 'mid';
+      return 'mid';
+    }
+
+    var form   = document.getElementById('qualifyForm');
+    var result = document.getElementById('qualifyResult');
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var lastSubmit = getSelected('qLastSubmit');
+      var ros        = getSelected('qROs');
+      var brand      = document.getElementById('qBrand').value.trim();
+      var state      = document.getElementById('qState').value;
+      var name       = document.getElementById('qName').value.trim();
+      var dealership = document.getElementById('qDealership').value.trim();
+      var email      = document.getElementById('qEmail').value.trim();
+
+      if(!lastSubmit || !ros){
+        result.className = 'mid';
+        result.style.display = 'block';
+        result.innerHTML = '<strong>Please select an option</strong> for last submission and monthly RO volume.';
+        return;
+      }
+
+      var s = score(lastSubmit, ros);
+      var msgs = {
+        good: '<strong>Good news — you look like a strong candidate.</strong><br>Based on your answers, your store is likely leaving real money on the table. We\'ll review your situation and tell you exactly what\'s possible. Submitting your info now…',
+        mid:  '<strong>You may have an opportunity here.</strong><br>Depending on your current rate and RO mix, there could be a meaningful increase available. Let\'s take a closer look. Submitting your info now…',
+        low:  '<strong>You may need to wait before resubmitting.</strong><br>Most OEMs require at least 12 months between submissions. If your situation has changed, we can advise on timing. Submitting your info now…'
+      };
+      result.className = s;
+      result.style.display = 'block';
+      result.innerHTML = msgs[s];
+
+      // Submit to portal contact endpoint
+      var message = [
+        'WARRANTY QUALIFIER LEAD',
+        'Brand: ' + brand,
+        'State: ' + state,
+        'Last submission: ' + lastSubmit,
+        'Monthly warranty ROs: ' + ros,
+        'Score: ' + s
+      ].join('\n');
+
+      try {
+        await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name, dealership: dealership, email: email,
+            oem: brand, service: 'warranty_beta', message: message
+          })
+        });
+        result.className = 'sent';
+        result.innerHTML = '<strong>Got it — thanks, ' + name.split(' ')[0] + '!</strong><br>We\'ll review your answers and be in touch within one business day.';
+      } catch(err) {
+        result.innerHTML += '<br><small>Couldn\'t submit automatically — email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a> and mention Warranty Qualifier.</small>';
+      }
+    });
+  })();
+  </script>
 
 </body>
 </html>
