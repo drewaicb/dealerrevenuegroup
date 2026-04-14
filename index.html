@@ -107,6 +107,7 @@
     #qualifyResult.mid   { background: #fffbeb; border: 1px solid #f6e05e; color: #744210; }
     #qualifyResult.low   { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
     #qualifyResult.sent  { background: #ebf8ff; border: 1px solid #bee3f8; color: #1E4D7B; }
+    #qualifyResult.error { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
 
     /* ── OEM logo strip ── */
     .oem-strip {
@@ -528,14 +529,12 @@
     }
 
     function score(lastSubmit, ros){
-      // Good: never or 5+yr AND high volume
-      // Mid: 3-5yr OR moderate volume
-      // Low: submitted within past year (usually locked out)
+      // Low: submitted within past year (usually locked out by OEM)
+      // Good: never or 5+yr AND enough RO volume to hit 100-RO sample
+      // Mid: everything else (1-5yr gap, or low volume)
       if(lastSubmit === 'recent') return 'low';
-      if((lastSubmit === 'never' || lastSubmit === '5plus') && (ros === 'high' || ros === 'very_high')) return 'good';
+      if(ros === 'low') return 'mid';   // sub-50/mo can't hit 100-RO WI requirement
       if(lastSubmit === 'never' || lastSubmit === '5plus') return 'good';
-      if(lastSubmit === '3to5') return 'mid';
-      if(lastSubmit === '1to3') return 'mid';
       return 'mid';
     }
 
@@ -553,7 +552,7 @@
       var email      = document.getElementById('qEmail').value.trim();
 
       if(!lastSubmit || !ros){
-        result.className = 'mid';
+        result.className = 'error';
         result.style.display = 'block';
         result.innerHTML = '<strong>Please select an option</strong> for last submission and monthly RO volume.';
         return;
@@ -579,8 +578,22 @@
         'Score: ' + s
       ].join('\n');
 
+      var mailtoBody = encodeURIComponent(
+        'WARRANTY QUALIFIER\n' +
+        'Name: ' + name + '\n' +
+        'Dealership: ' + dealership + '\n' +
+        'Brand: ' + brand + '\n' +
+        'State: ' + state + '\n' +
+        'Last submission: ' + lastSubmit + '\n' +
+        'Monthly warranty ROs: ' + ros
+      );
+      var mailtoLink = 'mailto:info@dealerrevenuegroup.com'
+        + '?subject=' + encodeURIComponent('Warranty Qualifier — ' + dealership)
+        + '&body=' + mailtoBody;
+
+      var submitted = false;
       try {
-        await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
+        var res = await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -588,10 +601,13 @@
             oem: brand, service: 'warranty_beta', message: message
           })
         });
-        result.className = 'sent';
-        result.innerHTML = '<strong>Got it — thanks, ' + name.split(' ')[0] + '!</strong><br>We\'ll review your answers and be in touch within one business day.';
-      } catch(err) {
-        result.innerHTML += '<br><small>Couldn\'t submit automatically — email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a> and mention Warranty Qualifier.</small>';
+        if(res.ok) submitted = true;
+      } catch(err) { /* fall through */ }
+
+      if(submitted){
+        result.innerHTML += '<br><small style="opacity:.8">Got it, ' + name.split(' ')[0] + ' — we\'ll be in touch within one business day.</small>';
+      } else {
+        result.innerHTML += '<br><small>Couldn\'t submit automatically — <a href="' + mailtoLink + '">click here to email us</a> with your answers pre-filled.</small>';
       }
     });
   })();
