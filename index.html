@@ -106,8 +106,119 @@
     #qualifyResult.good  { background: #f0fff4; border: 1px solid #9ae6b4; color: #276749; }
     #qualifyResult.mid   { background: #fffbeb; border: 1px solid #f6e05e; color: #744210; }
     #qualifyResult.low   { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
-    #qualifyResult.sent  { background: #ebf8ff; border: 1px solid #bee3f8; color: #1E4D7B; }
+    #qualifyResult.sent  { background: #f0fff4; border: 1px solid #9ae6b4; color: #276749; }
     #qualifyResult.error { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
+
+    /* ── RO Analysis Modal ── */
+    .ro-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,22,40,0.72);
+      backdrop-filter: blur(4px);
+      z-index: 500;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+    .ro-modal-overlay.open { display: flex; }
+    .ro-modal {
+      background: #fff;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 680px;
+      box-shadow: var(--shadow-lg);
+      margin: auto;
+    }
+    .ro-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ro-modal-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy-light);
+      margin: 0;
+    }
+    .ro-modal-header p {
+      font-size: .78rem;
+      color: var(--text-muted);
+      margin: .2rem 0 0;
+    }
+    .ro-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: .2rem .4rem;
+      border-radius: 4px;
+      transition: background .15s;
+      flex-shrink: 0;
+    }
+    .ro-modal-close:hover { background: var(--off-white); color: var(--navy); }
+    .ro-modal-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .ro-section-label {
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--navy-light);
+      margin: 1rem 0 .45rem;
+      padding-bottom: .3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ro-section-label:first-child { margin-top: 0; }
+    .ro-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+      margin-bottom: .5rem;
+    }
+    .ro-row.single { grid-template-columns: 1fr; }
+    @media (max-width: 520px) { .ro-row { grid-template-columns: 1fr; } }
+    .ro-field label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text-muted);
+      margin-bottom: .22rem;
+    }
+    .ro-field input, .ro-field select {
+      width: 100%;
+      padding: .42rem .65rem;
+      font-size: .88rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      background: #fff;
+      box-sizing: border-box;
+      transition: border-color .15s;
+    }
+    .ro-field input:focus, .ro-field select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    #roResult {
+      margin-top: 1rem;
+      padding: .9rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: .88rem;
+      line-height: 1.6;
+      background: #f0fff4;
+      border: 1px solid #9ae6b4;
+      color: #276749;
+      display: none;
+    }
 
     /* ── OEM logo strip ── */
     .oem-strip {
@@ -147,8 +258,7 @@
   <!-- ── NAV ──────────────────────────────── -->
   <nav>
     <a class="nav-logo" href="#">
-      <div class="nav-logo-mark">DRG</div>
-      <span class="nav-logo-text">Dealer Revenue Group</span>
+      <img src="drg-logo-hires.png" class="nav-logo-img" alt="Dealer Revenue Group">
     </a>
     <a class="nav-cta" href="#contact">Get Started</a>
   </nav>
@@ -242,7 +352,7 @@
         <!-- ── Deal Tracker ── -->
         <div class="service-card">
           <div class="service-icon">🗺️</div>
-          <h3>Deal Tracker <small style="font-size:.72rem;font-weight:500;color:#5A7A9A">Out-of-State Deal Compliance</small></h3>
+          <h3>Deal Tracker <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">Out-of-State Deal Compliance</small></h3>
           <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our Deal Tracker delivers an instant, state-specific checklist — so your F&amp;I team gets it right the first time, every time.</p>
           <ul class="service-features">
             <li>Instant checklist by customer state, county &amp; deal type</li>
@@ -287,166 +397,9 @@
             <li>Labor rate &amp; parts markup — both covered</li>
           </ul>
 
-          <!-- ── Lead Gen: Upload RO Data ── -->
-          <div class="qualify-wrap" id="qualifyWrap">
-            <div class="qualify-heading">Upload RO Data — Get Your Free Rate Analysis</div>
-            <p style="font-size:.78rem;color:var(--text-muted);margin:0 0 .85rem">Enter your YTD service data (minimum 3 months). We'll analyze your RO mix and tell you exactly what rate increase is available.</p>
-            <form id="qualifyForm">
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin-bottom:.4rem">Dealership Info</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Dealership Name</label>
-                  <input type="text" id="qDealership" placeholder="Smith BMW" required>
-                </div>
-                <div class="qualify-field">
-                  <label>Franchise</label>
-                  <input type="text" id="qFranchise" placeholder="BMW, Toyota, Ford…" required>
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>State of Dealership</label>
-                  <select id="qState" required>
-                    <option value="">— State —</option>
-                    <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
-                    <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
-                    <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
-                    <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
-                    <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
-                    <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
-                    <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
-                    <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
-                    <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
-                    <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
-                    <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
-                    <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
-                    <option>WI</option><option>WY</option>
-                  </select>
-                </div>
-                <div class="qualify-field">
-                  <label>DMS</label>
-                  <input type="text" id="qDMS" placeholder="CDK, Reynolds, DealerSocket…">
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Sample Period</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>How many months is this sample size?</label>
-                  <input type="number" id="qMonths" placeholder="e.g. 3" min="1" max="24" required>
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Labor Rates</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Actual CP Door Rate ($/hr)</label>
-                  <input type="number" id="qCPRate" placeholder="e.g. 165.00" min="0" step="0.01">
-                </div>
-                <div class="qualify-field">
-                  <label>Actual Warranty Rate ($/hr)</label>
-                  <input type="number" id="qWarrantyRate" placeholder="e.g. 110.00" min="0" step="0.01">
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Actual Internal Rate ($/hr)</label>
-                  <input type="number" id="qInternalRate" placeholder="e.g. 120.00" min="0" step="0.01">
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Customer Pay Labor</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Customer Pay Labor Sales ($)</label>
-                  <input type="number" id="qCPLaborSales" placeholder="e.g. 450000" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>Customer Pay Labor Gross ($)</label>
-                  <input type="number" id="qCPLaborGross" placeholder="e.g. 320000" min="0">
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Total Customer Pay Labor Hours</label>
-                  <input type="number" id="qCPLaborHours" placeholder="e.g. 2400" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>How many Customer Pay Repair Orders</label>
-                  <input type="number" id="qCPROs" placeholder="e.g. 850" min="0">
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Warranty Labor</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Warranty Labor Sales ($)</label>
-                  <input type="number" id="qWLaborSales" placeholder="e.g. 180000" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>Warranty Labor Gross ($)</label>
-                  <input type="number" id="qWLaborGross" placeholder="e.g. 140000" min="0">
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Total Warranty Labor Hours</label>
-                  <input type="number" id="qWLaborHours" placeholder="e.g. 1200" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>How many Warranty Repair Orders</label>
-                  <input type="number" id="qWROs" placeholder="e.g. 400" min="0">
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Parts</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Customer Pay Parts Sales ($)</label>
-                  <input type="number" id="qCPPartsSales" placeholder="e.g. 200000" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>Customer Pay Parts Gross ($)</label>
-                  <input type="number" id="qCPPartsGross" placeholder="e.g. 90000" min="0">
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Warranty Parts Sales ($)</label>
-                  <input type="number" id="qWPartsSales" placeholder="e.g. 80000" min="0">
-                </div>
-                <div class="qualify-field">
-                  <label>Warranty Parts Gross ($)</label>
-                  <input type="number" id="qWPartsGross" placeholder="e.g. 28000" min="0">
-                </div>
-              </div>
-
-              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Volume &amp; Contact</div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>New Car Volume (units in period)</label>
-                  <input type="number" id="qNewCars" placeholder="e.g. 120" min="0">
-                </div>
-              </div>
-              <div class="qualify-row">
-                <div class="qualify-field">
-                  <label>Your Name</label>
-                  <input type="text" id="qName" placeholder="Jane Smith" required>
-                </div>
-                <div class="qualify-field">
-                  <label>Email Address</label>
-                  <input type="email" id="qEmail" placeholder="jane@smithbmw.com" required>
-                </div>
-              </div>
-
-              <button type="submit" class="early-access-btn" style="width:100%;text-align:center;margin-top:.5rem">
-                Submit for Free Analysis →
-              </button>
-            </form>
-
-            <div id="qualifyResult" style="display:none"></div>
-          </div>
+          <button class="early-access-btn" id="openROModal">
+            Get Free Rate Analysis →
+          </button>
         </div>
 
       </div>
@@ -540,8 +493,8 @@
           </form>
           <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
             <div style="font-size:48px;margin-bottom:16px;">✓</div>
-            <h3 style="color:#1E4D7B;margin:0 0 12px;">Got it — thanks!</h3>
-            <p style="color:#5A7A9A;margin:0;">We'll review your info and be in touch within one business day.</p>
+            <h3 style="color:var(--navy-light);margin:0 0 12px;">Got it — thanks!</h3>
+            <p style="color:var(--text-muted);margin:0;">We'll review your info and be in touch within one business day.</p>
           </div>
         </div>
 
@@ -593,11 +546,126 @@
     <p style="margin-top:.5rem;">OEMCo-op.com is a DRG service.</p>
   </footer>
 
+  <!-- ── RO Analysis Modal ── -->
+  <div id="roModal" class="ro-modal-overlay">
+    <div class="ro-modal" id="roModalBox">
+      <div class="ro-modal-header">
+        <div>
+          <h3>Free Warranty Rate Analysis</h3>
+          <p>Enter your YTD service data (minimum 3 months)</p>
+        </div>
+        <button class="ro-modal-close" id="closeROModal">×</button>
+      </div>
+      <div class="ro-modal-body">
+        <form id="qualifyForm">
+          <div class="ro-section-label">Dealership Info</div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Dealership Name</label><input type="text" id="qDealership" placeholder="Smith BMW" required></div>
+            <div class="ro-field"><label>Franchise</label><input type="text" id="qFranchise" placeholder="BMW, Toyota, Ford…" required></div>
+          </div>
+          <div class="ro-row">
+            <div class="ro-field">
+              <label>State of Dealership</label>
+              <select id="qState" required>
+                <option value="">— State —</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="ro-field"><label>DMS</label><input type="text" id="qDMS" placeholder="CDK, Reynolds, DealerSocket…"></div>
+          </div>
+
+          <div class="ro-section-label">Sample Period</div>
+          <div class="ro-row single">
+            <div class="ro-field"><label>How many months is this sample size?</label><input type="number" id="qMonths" placeholder="e.g. 3" min="1" max="24" required></div>
+          </div>
+
+          <div class="ro-section-label">Labor Rates</div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Actual CP Door Rate ($/hr)</label><input type="number" id="qCPRate" placeholder="165.00" min="0" step="0.01"></div>
+            <div class="ro-field"><label>Actual Warranty Rate ($/hr)</label><input type="number" id="qWarrantyRate" placeholder="110.00" min="0" step="0.01"></div>
+          </div>
+          <div class="ro-row single">
+            <div class="ro-field"><label>Actual Internal Rate ($/hr)</label><input type="number" id="qInternalRate" placeholder="120.00" min="0" step="0.01"></div>
+          </div>
+
+          <div class="ro-section-label">Customer Pay Labor</div>
+          <div class="ro-row">
+            <div class="ro-field"><label>CP Labor Sales ($)</label><input type="number" id="qCPLaborSales" placeholder="450000" min="0"></div>
+            <div class="ro-field"><label>CP Labor Gross ($)</label><input type="number" id="qCPLaborGross" placeholder="320000" min="0"></div>
+          </div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Total CP Labor Hours</label><input type="number" id="qCPLaborHours" placeholder="2400" min="0"></div>
+            <div class="ro-field"><label>CP Repair Orders</label><input type="number" id="qCPROs" placeholder="850" min="0"></div>
+          </div>
+
+          <div class="ro-section-label">Warranty Labor</div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Warranty Labor Sales ($)</label><input type="number" id="qWLaborSales" placeholder="180000" min="0"></div>
+            <div class="ro-field"><label>Warranty Labor Gross ($)</label><input type="number" id="qWLaborGross" placeholder="140000" min="0"></div>
+          </div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Total Warranty Labor Hours</label><input type="number" id="qWLaborHours" placeholder="1200" min="0"></div>
+            <div class="ro-field"><label>Warranty Repair Orders</label><input type="number" id="qWROs" placeholder="400" min="0"></div>
+          </div>
+
+          <div class="ro-section-label">Parts</div>
+          <div class="ro-row">
+            <div class="ro-field"><label>CP Parts Sales ($)</label><input type="number" id="qCPPartsSales" placeholder="200000" min="0"></div>
+            <div class="ro-field"><label>CP Parts Gross ($)</label><input type="number" id="qCPPartsGross" placeholder="90000" min="0"></div>
+          </div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Warranty Parts Sales ($)</label><input type="number" id="qWPartsSales" placeholder="80000" min="0"></div>
+            <div class="ro-field"><label>Warranty Parts Gross ($)</label><input type="number" id="qWPartsGross" placeholder="28000" min="0"></div>
+          </div>
+
+          <div class="ro-section-label">Volume &amp; Contact</div>
+          <div class="ro-row single">
+            <div class="ro-field"><label>New Car Volume (units in period)</label><input type="number" id="qNewCars" placeholder="120" min="0"></div>
+          </div>
+          <div class="ro-row">
+            <div class="ro-field"><label>Your Name</label><input type="text" id="qName" placeholder="Jane Smith" required></div>
+            <div class="ro-field"><label>Email Address</label><input type="email" id="qEmail" placeholder="jane@smithbmw.com" required></div>
+          </div>
+
+          <button type="submit" class="early-access-btn" style="width:100%;text-align:center;margin-top:.85rem">
+            Submit for Free Analysis →
+          </button>
+        </form>
+        <div id="roResult"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
-  // ── Warranty RO data upload form ────────────────────────────────────────
+  // ── RO Analysis Modal ────────────────────────────────────────────────────
   (function(){
+    var overlay = document.getElementById('roModal');
+    var box     = document.getElementById('roModalBox');
+    var openBtn = document.getElementById('openROModal');
+    var closeBtn = document.getElementById('closeROModal');
+
+    function openModal(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+    if(openBtn)  openBtn.addEventListener('click', openModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
     var form   = document.getElementById('qualifyForm');
-    var result = document.getElementById('qualifyResult');
+    var result = document.getElementById('roResult');
     if(!form) return;
 
     function v(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
@@ -629,7 +697,6 @@
       var name          = v('qName');
       var email         = v('qEmail');
 
-      result.className = 'sent';
       result.style.display = 'block';
       result.innerHTML = '<strong>Got it — thank you!</strong><br>We\'ll review your data and follow up within one business day with your rate analysis.';
 
