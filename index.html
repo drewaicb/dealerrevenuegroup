@@ -287,17 +287,26 @@
             <li>Labor rate &amp; parts markup — both covered</li>
           </ul>
 
-          <!-- ── Lead Gen: Quick Qualifier ── -->
+          <!-- ── Lead Gen: Upload RO Data ── -->
           <div class="qualify-wrap" id="qualifyWrap">
-            <div class="qualify-heading">See if your store qualifies — 60 seconds</div>
+            <div class="qualify-heading">Upload RO Data — Get Your Free Rate Analysis</div>
+            <p style="font-size:.78rem;color:var(--text-muted);margin:0 0 .85rem">Enter your YTD service data (minimum 3 months). We'll analyze your RO mix and tell you exactly what rate increase is available.</p>
             <form id="qualifyForm">
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin-bottom:.4rem">Dealership Info</div>
               <div class="qualify-row">
                 <div class="qualify-field">
-                  <label>Brand(s) you carry</label>
-                  <input type="text" id="qBrand" placeholder="e.g. BMW, Toyota, Ford…" required>
+                  <label>Dealership Name</label>
+                  <input type="text" id="qDealership" placeholder="Smith BMW" required>
                 </div>
                 <div class="qualify-field">
-                  <label>Your state</label>
+                  <label>Franchise</label>
+                  <input type="text" id="qFranchise" placeholder="BMW, Toyota, Ford…" required>
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>State of Dealership</label>
                   <select id="qState" required>
                     <option value="">— State —</option>
                     <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
@@ -315,46 +324,124 @@
                     <option>WI</option><option>WY</option>
                   </select>
                 </div>
-              </div>
-
-              <div class="qualify-field" style="margin-bottom:.75rem">
-                <label>When did you last submit for a warranty labor rate increase?</label>
-                <div class="qualify-pills" id="qLastSubmit">
-                  <button type="button" data-val="never">Never</button>
-                  <button type="button" data-val="5plus">5+ years ago</button>
-                  <button type="button" data-val="3to5">3–5 years ago</button>
-                  <button type="button" data-val="1to3">1–3 years ago</button>
-                  <button type="button" data-val="recent">Within past year</button>
+                <div class="qualify-field">
+                  <label>DMS</label>
+                  <input type="text" id="qDMS" placeholder="CDK, Reynolds, DealerSocket…">
                 </div>
               </div>
 
-              <div class="qualify-field" style="margin-bottom:.75rem">
-                <label>Approx. monthly warranty repair orders</label>
-                <div class="qualify-pills" id="qROs">
-                  <button type="button" data-val="low">Under 50</button>
-                  <button type="button" data-val="mid">50–150</button>
-                  <button type="button" data-val="high">150–300</button>
-                  <button type="button" data-val="very_high">300+</button>
-                </div>
-              </div>
-
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Sample Period</div>
               <div class="qualify-row">
                 <div class="qualify-field">
-                  <label>Your name</label>
+                  <label>How many months is this sample size?</label>
+                  <input type="number" id="qMonths" placeholder="e.g. 3" min="1" max="24" required>
+                </div>
+              </div>
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Labor Rates</div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Actual CP Door Rate ($/hr)</label>
+                  <input type="number" id="qCPRate" placeholder="e.g. 165.00" min="0" step="0.01">
+                </div>
+                <div class="qualify-field">
+                  <label>Actual Warranty Rate ($/hr)</label>
+                  <input type="number" id="qWarrantyRate" placeholder="e.g. 110.00" min="0" step="0.01">
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Actual Internal Rate ($/hr)</label>
+                  <input type="number" id="qInternalRate" placeholder="e.g. 120.00" min="0" step="0.01">
+                </div>
+              </div>
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Customer Pay Labor</div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Customer Pay Labor Sales ($)</label>
+                  <input type="number" id="qCPLaborSales" placeholder="e.g. 450000" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>Customer Pay Labor Gross ($)</label>
+                  <input type="number" id="qCPLaborGross" placeholder="e.g. 320000" min="0">
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Total Customer Pay Labor Hours</label>
+                  <input type="number" id="qCPLaborHours" placeholder="e.g. 2400" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>How many Customer Pay Repair Orders</label>
+                  <input type="number" id="qCPROs" placeholder="e.g. 850" min="0">
+                </div>
+              </div>
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Warranty Labor</div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Warranty Labor Sales ($)</label>
+                  <input type="number" id="qWLaborSales" placeholder="e.g. 180000" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>Warranty Labor Gross ($)</label>
+                  <input type="number" id="qWLaborGross" placeholder="e.g. 140000" min="0">
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Total Warranty Labor Hours</label>
+                  <input type="number" id="qWLaborHours" placeholder="e.g. 1200" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>How many Warranty Repair Orders</label>
+                  <input type="number" id="qWROs" placeholder="e.g. 400" min="0">
+                </div>
+              </div>
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Parts</div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Customer Pay Parts Sales ($)</label>
+                  <input type="number" id="qCPPartsSales" placeholder="e.g. 200000" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>Customer Pay Parts Gross ($)</label>
+                  <input type="number" id="qCPPartsGross" placeholder="e.g. 90000" min="0">
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Warranty Parts Sales ($)</label>
+                  <input type="number" id="qWPartsSales" placeholder="e.g. 80000" min="0">
+                </div>
+                <div class="qualify-field">
+                  <label>Warranty Parts Gross ($)</label>
+                  <input type="number" id="qWPartsGross" placeholder="e.g. 28000" min="0">
+                </div>
+              </div>
+
+              <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-light);margin:.75rem 0 .4rem">Volume &amp; Contact</div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>New Car Volume (units in period)</label>
+                  <input type="number" id="qNewCars" placeholder="e.g. 120" min="0">
+                </div>
+              </div>
+              <div class="qualify-row">
+                <div class="qualify-field">
+                  <label>Your Name</label>
                   <input type="text" id="qName" placeholder="Jane Smith" required>
                 </div>
                 <div class="qualify-field">
-                  <label>Dealership name</label>
-                  <input type="text" id="qDealership" placeholder="Smith BMW" required>
+                  <label>Email Address</label>
+                  <input type="email" id="qEmail" placeholder="jane@smithbmw.com" required>
                 </div>
               </div>
-              <div class="qualify-field" style="margin-bottom:.85rem">
-                <label>Email address</label>
-                <input type="email" id="qEmail" placeholder="jane@smithbmw.com" required>
-              </div>
 
-              <button type="submit" class="early-access-btn" style="width:100%;text-align:center">
-                Check My Rate →
+              <button type="submit" class="early-access-btn" style="width:100%;text-align:center;margin-top:.5rem">
+                Submit for Free Analysis →
               </button>
             </form>
 
@@ -507,108 +594,97 @@
   </footer>
 
   <script>
-  // ── Warranty qualifier form ──────────────────────────────────────────────
+  // ── Warranty RO data upload form ────────────────────────────────────────
   (function(){
-    // Pill selectors
-    ['qLastSubmit','qROs'].forEach(function(groupId){
-      var group = document.getElementById(groupId);
-      if(!group) return;
-      group.querySelectorAll('button').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          group.querySelectorAll('button').forEach(function(b){ b.classList.remove('selected'); });
-          this.classList.add('selected');
-        });
-      });
-    });
-
-    function getSelected(groupId){
-      var group = document.getElementById(groupId);
-      if(!group) return null;
-      var sel = group.querySelector('button.selected');
-      return sel ? sel.getAttribute('data-val') : null;
-    }
-
-    function score(lastSubmit, ros){
-      // Low: submitted within past year (usually locked out by OEM)
-      // Good: never or 5+yr AND enough RO volume to hit 100-RO sample
-      // Mid: everything else (1-5yr gap, or low volume)
-      if(lastSubmit === 'recent') return 'low';
-      if(ros === 'low') return 'mid';   // sub-50/mo can't hit 100-RO WI requirement
-      if(lastSubmit === 'never' || lastSubmit === '5plus') return 'good';
-      return 'mid';
-    }
-
     var form   = document.getElementById('qualifyForm');
     var result = document.getElementById('qualifyResult');
+    if(!form) return;
+
+    function v(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
     form.addEventListener('submit', async function(e){
       e.preventDefault();
-      var lastSubmit = getSelected('qLastSubmit');
-      var ros        = getSelected('qROs');
-      var brand      = document.getElementById('qBrand').value.trim();
-      var state      = document.getElementById('qState').value;
-      var name       = document.getElementById('qName').value.trim();
-      var dealership = document.getElementById('qDealership').value.trim();
-      var email      = document.getElementById('qEmail').value.trim();
 
-      if(!lastSubmit || !ros){
-        result.className = 'error';
-        result.style.display = 'block';
-        result.innerHTML = '<strong>Please select an option</strong> for last submission and monthly RO volume.';
-        return;
-      }
+      var dealership  = v('qDealership');
+      var franchise   = v('qFranchise');
+      var state       = v('qState');
+      var dms         = v('qDMS');
+      var months      = v('qMonths');
+      var cpRate      = v('qCPRate');
+      var wRate       = v('qWarrantyRate');
+      var intRate     = v('qInternalRate');
+      var cpLaborSales  = v('qCPLaborSales');
+      var cpLaborGross  = v('qCPLaborGross');
+      var cpLaborHours  = v('qCPLaborHours');
+      var cpROs         = v('qCPROs');
+      var wLaborSales   = v('qWLaborSales');
+      var wLaborGross   = v('qWLaborGross');
+      var wLaborHours   = v('qWLaborHours');
+      var wROs          = v('qWROs');
+      var cpPartsSales  = v('qCPPartsSales');
+      var cpPartsGross  = v('qCPPartsGross');
+      var wPartsSales   = v('qWPartsSales');
+      var wPartsGross   = v('qWPartsGross');
+      var newCars       = v('qNewCars');
+      var name          = v('qName');
+      var email         = v('qEmail');
 
-      var s = score(lastSubmit, ros);
-      var msgs = {
-        good: '<strong>Good news — you look like a strong candidate.</strong><br>Based on your answers, your store is likely leaving real money on the table. We\'ll review your situation and tell you exactly what\'s possible. Submitting your info now…',
-        mid:  '<strong>You may have an opportunity here.</strong><br>Depending on your current rate and RO mix, there could be a meaningful increase available. Let\'s take a closer look. Submitting your info now…',
-        low:  '<strong>You may need to wait before resubmitting.</strong><br>Most OEMs require at least 12 months between submissions. If your situation has changed, we can advise on timing. Submitting your info now…'
-      };
-      result.className = s;
+      result.className = 'sent';
       result.style.display = 'block';
-      result.innerHTML = msgs[s];
+      result.innerHTML = '<strong>Got it — thank you!</strong><br>We\'ll review your data and follow up within one business day with your rate analysis.';
 
-      // Submit to portal contact endpoint
       var message = [
-        'WARRANTY QUALIFIER LEAD',
-        'Brand: ' + brand,
+        'WARRANTY RATE ANALYSIS REQUEST',
+        '--- Dealership ---',
+        'Dealership: ' + dealership,
+        'Franchise: ' + franchise,
         'State: ' + state,
-        'Last submission: ' + lastSubmit,
-        'Monthly warranty ROs: ' + ros,
-        'Score: ' + s
+        'DMS: ' + dms,
+        '--- Sample Period ---',
+        'Months: ' + months,
+        '--- Labor Rates ---',
+        'CP Door Rate: $' + cpRate + '/hr',
+        'Warranty Rate: $' + wRate + '/hr',
+        'Internal Rate: $' + intRate + '/hr',
+        '--- Customer Pay Labor ---',
+        'CP Labor Sales: $' + cpLaborSales,
+        'CP Labor Gross: $' + cpLaborGross,
+        'CP Labor Hours: ' + cpLaborHours,
+        'CP Repair Orders: ' + cpROs,
+        '--- Warranty Labor ---',
+        'Warranty Labor Sales: $' + wLaborSales,
+        'Warranty Labor Gross: $' + wLaborGross,
+        'Warranty Labor Hours: ' + wLaborHours,
+        'Warranty Repair Orders: ' + wROs,
+        '--- Parts ---',
+        'CP Parts Sales: $' + cpPartsSales,
+        'CP Parts Gross: $' + cpPartsGross,
+        'Warranty Parts Sales: $' + wPartsSales,
+        'Warranty Parts Gross: $' + wPartsGross,
+        '--- Volume ---',
+        'New Car Volume: ' + newCars
       ].join('\n');
 
-      var mailtoBody = encodeURIComponent(
-        'WARRANTY QUALIFIER\n' +
-        'Name: ' + name + '\n' +
-        'Dealership: ' + dealership + '\n' +
-        'Brand: ' + brand + '\n' +
-        'State: ' + state + '\n' +
-        'Last submission: ' + lastSubmit + '\n' +
-        'Monthly warranty ROs: ' + ros
-      );
+      var mailtoBody = encodeURIComponent(message + '\nName: ' + name + '\nEmail: ' + email);
       var mailtoLink = 'mailto:info@dealerrevenuegroup.com'
-        + '?subject=' + encodeURIComponent('Warranty Qualifier — ' + dealership)
+        + '?subject=' + encodeURIComponent('Warranty Rate Analysis — ' + dealership)
         + '&body=' + mailtoBody;
 
-      var submitted = false;
       try {
         var res = await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             name: name, dealership: dealership, email: email,
-            oem: brand, service: 'warranty_beta', message: message
+            oem: franchise, service: 'warranty_beta', message: message
           })
         });
-        if(res.ok) submitted = true;
-      } catch(err) { /* fall through */ }
-
-      if(submitted){
-        result.innerHTML += '<br><small style="opacity:.8">Got it, ' + name.split(' ')[0] + ' — we\'ll be in touch within one business day.</small>';
-      } else {
-        result.innerHTML += '<br><small>Couldn\'t submit automatically — <a href="' + mailtoLink + '">click here to email us</a> with your answers pre-filled.</small>';
+        if(!res.ok) throw new Error('server');
+      } catch(err) {
+        result.innerHTML += '<br><small>Couldn\'t submit automatically — <a href="' + mailtoLink + '">click here to email us</a> with your data pre-filled.</small>';
       }
+
+      form.style.display = 'none';
     });
   })();
   </script>
