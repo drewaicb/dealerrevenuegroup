@@ -323,7 +323,7 @@
 
         <!-- ── ClaimSmith ── -->
         <div class="service-card">
-          <div class="service-icon">⚒️</div>
+          <div class="service-icon">💼</div>
           <h3>ClaimSmith™ <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">OEM Co-op Processing</small></h3>
           <p>We handle your co-op claims end to end — from vendor document collection to OEM portal submission to denial follow-up. You advertise. We get you paid. Works with every major OEM co-op program.</p>
           <ul class="service-features">
@@ -338,7 +338,7 @@
 
         <!-- ── Ad Tracking ── -->
         <div class="service-card">
-          <div class="service-icon">📊</div>
+          <div class="service-icon">📈</div>
           <h3>Ad Expense Tracking</h3>
           <p>Know exactly where every marketing dollar goes — by vendor, by source, by department, by month. Stop guessing what's working. Back every budget decision with clean, current numbers.</p>
           <ul class="service-features">
@@ -353,7 +353,7 @@
 
         <!-- ── Deal Tracker ── -->
         <div class="service-card">
-          <div class="service-icon">🗺️</div>
+          <div class="service-icon">📋</div>
           <h3>Deal Tracker <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">Out-of-State Deal Compliance</small></h3>
           <p>One missing document on an out-of-state deal can mean a delayed title, a returned deal, or a compliance fine. Our Deal Tracker delivers an instant, state-specific checklist — so your F&amp;I team gets it right the first time, every time.</p>
           <ul class="service-features">
@@ -367,8 +367,12 @@
         </div>
 
         <!-- ── Structure Deal ── -->
-        <div class="service-card">
-          <div class="service-icon">🧮</div>
+        <div class="service-card coming-soon">
+          <div class="coming-soon-badge">
+            Beta Coming Soon
+            <span class="beta-badge">Beta</span>
+          </div>
+          <div class="service-icon">🧾</div>
           <h3>Structure Deal</h3>
           <p>Instant fee breakdown for any out-of-state deal — enter the customer's ZIP and get state tax, title fees, and temp tag validity in seconds. No more guessing what to collect at signing.</p>
           <ul class="service-features">
@@ -406,8 +410,8 @@
 
         <!-- ── Narrative Monitor ── -->
         <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>Narrative Monitor <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">AI &amp; Reddit Reputation Intelligence</small></h3>
+          <div class="service-icon">🌐</div>
+          <h3>Narrative Monitor <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">AIGEO — AI Generative Engine Optimization</small></h3>
           <p>AI models like ChatGPT and Google AI are now the first stop for buyers researching dealerships. Narrative Monitor tells you exactly what those models say about you — and what Reddit says — so you can control your story before a competitor does.</p>
           <ul class="service-features">
             <li>Weekly audit of ChatGPT, Google AI &amp; Reddit for your dealership name</li>
@@ -417,9 +421,38 @@
             <li>Delivered to your inbox every Monday morning</li>
             <li>Any brand, any market — BMW, MINI, Mercedes, Toyota &amp; more</li>
           </ul>
-          <a href="https://portal.dealerrevenuegroup.com" class="early-access-btn">
-            Sign Up in Portal →
-          </a>
+
+          <div style="margin-top:1rem;padding:.75rem .85rem;background:rgba(245,243,255,.7);border-radius:8px;border:1px solid #e0d9ff">
+            <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#7c5cbf;margin-bottom:.45rem">AI Presence Coaching — included</div>
+            <ul style="margin:0;padding-left:1.1rem;font-size:.8rem;color:var(--text-muted);line-height:1.65">
+              <li>Keep your Google Business Profile current — AI models read it</li>
+              <li>Respond to every review; response tone shapes AI sentiment</li>
+              <li>Publish Q&amp;A content that answers the questions buyers actually ask</li>
+              <li>Consistent listings across Yelp, DealerRater &amp; Cars.com signal credibility</li>
+              <li>We coach your team on how to engage online without risking your reputation</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:1.1rem">
+            <div style="font-size:.78rem;font-weight:700;color:var(--navy-light);margin-bottom:.55rem">Request early access</div>
+            <form id="nm-signup-form" onsubmit="submitNMSignup(event)">
+              <div style="display:flex;flex-direction:column;gap:.5rem">
+                <input type="text" id="nm-name" placeholder="Your name" required
+                  style="padding:.42rem .7rem;border:1px solid var(--border);border-radius:6px;font-size:.84rem;font-family:inherit">
+                <input type="text" id="nm-dealership" placeholder="Dealership name" required
+                  style="padding:.42rem .7rem;border:1px solid var(--border);border-radius:6px;font-size:.84rem;font-family:inherit">
+                <input type="email" id="nm-email" placeholder="Email address" required
+                  style="padding:.42rem .7rem;border:1px solid var(--border);border-radius:6px;font-size:.84rem;font-family:inherit">
+                <input type="text" id="nm-oem" placeholder="Brand(s) — BMW, Toyota…"
+                  style="padding:.42rem .7rem;border:1px solid var(--border);border-radius:6px;font-size:.84rem;font-family:inherit">
+                <button type="submit" class="early-access-btn" id="nm-submit-btn" style="margin-top:.25rem">
+                  Request Access →
+                </button>
+              </div>
+              <p id="nm-success" style="display:none;color:#1a6a3a;font-size:.83rem;margin-top:.6rem;font-weight:600">✓ Got it — we'll be in touch within one business day.</p>
+              <p id="nm-error" style="display:none;color:#c0392b;font-size:.8rem;margin-top:.5rem">Something went wrong. Email <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>.</p>
+            </form>
+          </div>
         </div>
 
       </div>
@@ -498,6 +531,7 @@
                 <option value="ad_tracking">Ad Expense Tracking</option>
                 <option value="title_tracker">Title Tracker — Out-of-State Compliance</option>
                 <option value="warranty_beta">Warranty Rate Reimbursement (Early Access)</option>
+                <option value="narrative_monitor">Narrative Monitor — AIGEO (AI Generative Engine Optimization)</option>
                 <option value="multiple">Multiple Services</option>
                 <option value="unsure">Not sure yet — tell me more</option>
               </select>
@@ -554,6 +588,39 @@
         errEl.style.display = 'block';
       }
     });
+
+    async function submitNMSignup(e) {
+      e.preventDefault();
+      var btn = document.getElementById('nm-submit-btn');
+      var errEl = document.getElementById('nm-error');
+      var okEl = document.getElementById('nm-success');
+      errEl.style.display = 'none';
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      var data = {
+        name:       document.getElementById('nm-name').value,
+        dealership: document.getElementById('nm-dealership').value,
+        email:      document.getElementById('nm-email').value,
+        oem:        document.getElementById('nm-oem').value,
+        service:    'narrative_monitor',
+        message:    'Narrative Monitor early access request',
+      };
+      try {
+        var res = await fetch('https://portal.dealerrevenuegroup.com/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          document.getElementById('nm-signup-form').querySelector('div').style.display = 'none';
+          okEl.style.display = 'block';
+        } else { throw new Error('server'); }
+      } catch(err) {
+        btn.textContent = 'Request Access →';
+        btn.disabled = false;
+        errEl.style.display = 'block';
+      }
+    }
   </script>
 
       </div>
