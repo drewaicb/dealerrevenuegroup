@@ -109,6 +109,81 @@
     #qualifyResult.sent  { background: #f0fff4; border: 1px solid #9ae6b4; color: #276749; }
     #qualifyResult.error { background: #fff5f5; border: 1px solid #fc8181; color: #9b2c2c; }
 
+    /* ── CTA Modal ── */
+    .cta-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,22,40,.75); backdrop-filter: blur(5px);
+      z-index: 600; align-items: flex-start; justify-content: center;
+      padding: 2rem 1rem; overflow-y: auto;
+    }
+    .cta-overlay.open { display: flex; }
+    .cta-modal {
+      background: #fff; border-radius: 12px; width: 100%; max-width: 600px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.22); margin: auto;
+      animation: ctaSlideIn .22s ease;
+    }
+    @keyframes ctaSlideIn {
+      from { opacity:0; transform: translateY(-18px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .cta-modal-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.4rem .6rem;
+    }
+    .cta-tabs {
+      display: flex; gap: 0; border-radius: 8px; background: #f1f5f9; padding: 3px;
+    }
+    .cta-tab {
+      padding: .42rem 1rem; border-radius: 6px; font-size: .83rem; font-weight: 700;
+      cursor: pointer; border: none; background: transparent; color: #64748b;
+      transition: all .15s; white-space: nowrap;
+    }
+    .cta-tab.active { background: #fff; color: var(--navy); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+    .cta-close {
+      background: none; border: none; font-size: 1.4rem; line-height: 1; color: #94a3b8;
+      cursor: pointer; padding: .2rem .4rem; border-radius: 4px; transition: background .15s;
+      flex-shrink: 0;
+    }
+    .cta-close:hover { background: #f1f5f9; color: var(--navy); }
+    .cta-modal-body { padding: 0 1.4rem 1.4rem; }
+    .cta-panel { display: none; }
+    .cta-panel.active { display: block; }
+    .cta-headline { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin: 0 0 .3rem; }
+    .cta-sub { font-size: .84rem; color: #64748b; margin: 0 0 1.1rem; }
+    .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-bottom: .7rem; }
+    .cta-row.full { grid-template-columns: 1fr; }
+    @media (max-width: 480px) { .cta-row { grid-template-columns: 1fr; } }
+    .cta-field label {
+      display: block; font-size: .7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .05em; color: #64748b; margin-bottom: .28rem;
+    }
+    .cta-field input, .cta-field select, .cta-field textarea {
+      width: 100%; padding: .52rem .7rem; font-size: .9rem; font-family: inherit;
+      border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;
+      background: #fff; color: var(--navy); transition: border-color .15s;
+    }
+    .cta-field input:focus, .cta-field select:focus, .cta-field textarea:focus {
+      outline: none; border-color: var(--navy);
+    }
+    .cta-field textarea { resize: vertical; min-height: 80px; }
+    .cta-submit {
+      width: 100%; padding: .75rem 1rem; margin-top: .5rem;
+      background: var(--gold); color: #fff; font-size: .95rem; font-weight: 800;
+      border: none; border-radius: 7px; cursor: pointer; transition: opacity .15s;
+      letter-spacing: .02em;
+    }
+    .cta-submit:hover { opacity: .88; }
+    .cta-submit:disabled { opacity: .55; cursor: not-allowed; }
+    .cta-success {
+      display: none; text-align: center; padding: 2rem 1rem;
+    }
+    .cta-success-icon { font-size: 2.8rem; margin-bottom: .75rem; }
+    .cta-success h3 { font-size: 1.1rem; color: var(--navy); margin: 0 0 .5rem; }
+    .cta-success p { font-size: .88rem; color: #64748b; margin: 0; }
+    .cta-divider {
+      border: none; border-top: 1px solid #e2e8f0; margin: .9rem 0 1rem;
+    }
+
     /* ── RO Analysis Modal ── */
     .ro-modal-overlay {
       display: none;
@@ -260,7 +335,7 @@
     <a class="nav-logo" href="#">
       <img src="drg-logo-hires.png" class="nav-logo-img" alt="Dealer Revenue Group">
     </a>
-    <a class="nav-cta" href="#contact">Get Started</a>
+    <a class="nav-cta" href="#" onclick="openCTAModal(event)">Get Started</a>
   </nav>
 
   <!-- ── HERO ─────────────────────────────── -->
@@ -271,9 +346,12 @@
       <p>ClaimSmith™ recovers the advertising co-op funds your business is already entitled to — across every department, fully managed by DRG. Ad Expense Tracking delivers executive clarity on where every marketing dollar is going, so your leadership team stops guessing and starts growing. Narrative Monitor tracks what AI says about your business when buyers are ready to decide — and delivers best practices and organic strategies to improve how you show up in AI-generated search results.</p>
       <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Any brand. Any market. We handle the details.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#contact">Schedule a Review</a>
+        <a class="btn-primary" href="#" onclick="openCTAModal(event)">Schedule a Review</a>
         <a class="btn-outline" href="#services">See What We Do</a>
       </div>
+      <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
+        Just browsing? <a href="#" onclick="openQuestionModal(event)" style="color:var(--gold);font-weight:600;text-decoration:none;">Have a question →</a>
+      </p>
     </div>
   </section>
 
@@ -335,7 +413,7 @@
             <li>Monthly reporting and fund expiration alerts</li>
             <li>7-year audit-ready document storage</li>
           </ul>
-          <a href="#contact" class="early-access-btn">Get Started →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'coop')">Get Started →</a>
         </div>
 
         <!-- ── Ad Tracking ── -->
@@ -351,7 +429,7 @@
             <li>Works with your DMS or other existing reporting exports</li>
             <li>Included with ClaimSmith™</li>
           </ul>
-          <a href="#contact" class="early-access-btn">Get Started →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'ad_tracking')">Get Started →</a>
         </div>
 
         <!-- ── Narrative Monitor ── -->
@@ -371,7 +449,7 @@
             <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#7c5cbf;margin-bottom:.4rem">AI Visibility Strategy — included</div>
             <p style="margin:0;font-size:.81rem;color:var(--text-muted);line-height:1.6">Every subscription includes curated best practices and organic growth strategies to improve your AI search relevance — so more buyers find you first when they ask ChatGPT, Google AI, or Perplexity where to go.</p>
           </div>
-          <a href="#contact" class="early-access-btn">Get Started →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'narrative_monitor')">Get Started →</a>
         </div>
 
         <!-- ── Deal Tracker ── -->
@@ -387,7 +465,7 @@
             <li>Covers all 50 states — maintained by automotive operators</li>
             <li>Built for F&amp;I managers — plain language, fast lookup</li>
           </ul>
-          <a href="#contact" class="early-access-btn">Get Started →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'title_tracker')">Get Started →</a>
         </div>
 
         <!-- ── Structure Deal ── -->
@@ -407,7 +485,7 @@
             <li>Surfaces gotchas — wheel tax, EV surcharge, OOS dealer flags</li>
             <li>All 50 states, updated annually</li>
           </ul>
-          <a href="#contact" class="early-access-btn">Request Early Access →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'title_tracker')">Request Early Access →</a>
         </div>
 
         <!-- ── Warranty ── -->
@@ -427,7 +505,7 @@
             <li>Complete submission package prepared for you</li>
             <li>Labor rate &amp; parts markup — both covered</li>
           </ul>
-          <a href="#contact" class="early-access-btn">Request Early Access →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'warranty_beta')">Request Early Access →</a>
         </div>
 
       </div>
@@ -569,6 +647,215 @@
       </div>
     </div>
   </section>
+
+  <!-- ── CTA MODAL ────────────────────────────── -->
+  <div id="ctaOverlay" class="cta-overlay" role="dialog" aria-modal="true" aria-label="Get Started">
+    <div class="cta-modal" id="ctaModal">
+
+      <div class="cta-modal-top">
+        <div class="cta-tabs">
+          <button class="cta-tab active" id="tabBtnStart" onclick="switchCTATab('start')">Get Started</button>
+          <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Have a Question?</button>
+        </div>
+        <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
+      </div>
+
+      <div class="cta-modal-body">
+
+        <!-- ── GET STARTED PANEL ── -->
+        <div class="cta-panel active" id="panelStart">
+          <h2 class="cta-headline">Let's find your revenue.</h2>
+          <p class="cta-sub">Tell us a bit about your business and we'll reach out within one business day — no pressure, no obligation.</p>
+          <form id="ctaFormStart">
+            <div class="cta-row">
+              <div class="cta-field">
+                <label for="cs-name">Your Name <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cs-name" placeholder="Jane Smith" required autocomplete="name">
+              </div>
+              <div class="cta-field">
+                <label for="cs-biz">Business Name <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cs-biz" placeholder="Acme Dealership Group" required autocomplete="organization">
+              </div>
+            </div>
+            <div class="cta-row">
+              <div class="cta-field">
+                <label for="cs-email">Email <span style="color:#e53e3e">*</span></label>
+                <input type="email" id="cs-email" placeholder="jane@acmedealers.com" required autocomplete="email">
+              </div>
+              <div class="cta-field">
+                <label for="cs-phone">Phone</label>
+                <input type="tel" id="cs-phone" placeholder="(608) 555-0100" autocomplete="tel">
+              </div>
+            </div>
+            <div class="cta-row">
+              <div class="cta-field">
+                <label for="cs-oem">Brand(s) / Industry</label>
+                <input type="text" id="cs-oem" placeholder="BMW, Toyota, Healthcare…">
+              </div>
+              <div class="cta-field">
+                <label for="cs-service">I'm interested in…</label>
+                <select id="cs-service">
+                  <option value="">Select a service</option>
+                  <option value="coop">ClaimSmith™ — Co-op Processing</option>
+                  <option value="ad_tracking">Ad Expense Tracking</option>
+                  <option value="narrative_monitor">Narrative Monitor (AI Visibility)</option>
+                  <option value="title_tracker">Deal Tracker — Out-of-State Compliance</option>
+                  <option value="warranty_beta">Warranty Rate Reimbursement</option>
+                  <option value="multiple">Multiple Services</option>
+                  <option value="unsure">Not sure yet — tell me more</option>
+                </select>
+              </div>
+            </div>
+            <div class="cta-row full">
+              <div class="cta-field">
+                <label for="cs-msg">Anything else we should know?</label>
+                <textarea id="cs-msg" placeholder="Number of locations, current marketing challenges, what brought you here…"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="cta-submit" id="cs-submit-btn">Request a Review →</button>
+            <p id="cs-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
+              Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
+            </p>
+          </form>
+          <div class="cta-success" id="cs-success">
+            <div class="cta-success-icon">✓</div>
+            <h3>Got it — thanks!</h3>
+            <p>We'll review your info and reach out within one business day.</p>
+          </div>
+        </div>
+
+        <!-- ── QUESTION PANEL ── -->
+        <div class="cta-panel" id="panelQuestion">
+          <h2 class="cta-headline">Have a Question?</h2>
+          <p class="cta-sub">Send us a quick note and we'll get back to you within one business day.</p>
+          <form id="ctaFormQuestion">
+            <div class="cta-row">
+              <div class="cta-field">
+                <label for="cq-name">Your Name <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cq-name" placeholder="Jane Smith" required autocomplete="name">
+              </div>
+              <div class="cta-field">
+                <label for="cq-email">Email <span style="color:#e53e3e">*</span></label>
+                <input type="email" id="cq-email" placeholder="jane@example.com" required autocomplete="email">
+              </div>
+            </div>
+            <div class="cta-row full">
+              <div class="cta-field">
+                <label for="cq-msg">Your Question <span style="color:#e53e3e">*</span></label>
+                <textarea id="cq-msg" placeholder="What would you like to know?" required style="min-height:100px"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="cta-submit" id="cq-submit-btn">Send Question →</button>
+            <p id="cq-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
+              Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
+            </p>
+          </form>
+          <div class="cta-success" id="cq-success">
+            <div class="cta-success-icon">✓</div>
+            <h3>Message sent!</h3>
+            <p>We'll get back to you within one business day.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var overlay = document.getElementById('ctaOverlay');
+    var API     = 'https://portal.dealerrevenuegroup.com/api/contact';
+
+    // ── Open / Close ──────────────────────────────────────────────────────
+    window.openCTAModal = function(e, service) {
+      if (e) e.preventDefault();
+      switchCTATab('start');
+      if (service) {
+        var sel = document.getElementById('cs-service');
+        if (sel) sel.value = service;
+      }
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() { document.getElementById('cs-name').focus(); }, 80);
+    };
+
+    window.openQuestionModal = function(e) {
+      if (e) e.preventDefault();
+      switchCTATab('question');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() { document.getElementById('cq-name').focus(); }, 80);
+    };
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('ctaClose').addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    // ── Tab switching ─────────────────────────────────────────────────────
+    window.switchCTATab = function(tab) {
+      document.getElementById('panelStart').classList.toggle('active', tab === 'start');
+      document.getElementById('panelQuestion').classList.toggle('active', tab === 'question');
+      document.getElementById('tabBtnStart').classList.toggle('active', tab === 'start');
+      document.getElementById('tabBtnQuestion').classList.toggle('active', tab === 'question');
+    };
+
+    // ── Form submit helper ────────────────────────────────────────────────
+    async function submitForm(payload, btnId, errId, formId, successId) {
+      var btn  = document.getElementById(btnId);
+      var err  = document.getElementById(errId);
+      var orig = btn.textContent;
+      err.style.display = 'none';
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        var res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('server');
+        document.getElementById(formId).style.display = 'none';
+        document.getElementById(successId).style.display = 'block';
+      } catch(e) {
+        err.style.display = 'block';
+        btn.textContent = orig;
+        btn.disabled = false;
+      }
+    }
+
+    // ── Get Started form ──────────────────────────────────────────────────
+    document.getElementById('ctaFormStart').addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitForm({
+        name:       document.getElementById('cs-name').value,
+        dealership: document.getElementById('cs-biz').value,
+        email:      document.getElementById('cs-email').value,
+        phone:      document.getElementById('cs-phone').value,
+        oem:        document.getElementById('cs-oem').value,
+        service:    document.getElementById('cs-service').value,
+        message:    document.getElementById('cs-msg').value,
+        source:     'get_started_modal',
+      }, 'cs-submit-btn', 'cs-error', 'ctaFormStart', 'cs-success');
+    });
+
+    // ── Question form ─────────────────────────────────────────────────────
+    document.getElementById('ctaFormQuestion').addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitForm({
+        name:    document.getElementById('cq-name').value,
+        email:   document.getElementById('cq-email').value,
+        message: document.getElementById('cq-msg').value,
+        service: 'question',
+        source:  'question_modal',
+      }, 'cq-submit-btn', 'cq-error', 'ctaFormQuestion', 'cq-success');
+    });
+  })();
+  </script>
 
   <!-- ── FOOTER ─────────────────────────────── -->
   <footer>
