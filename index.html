@@ -65,7 +65,7 @@
     <a class="nav-logo" href="#">
       <img src="drg-logo-hires.png" class="nav-logo-img" alt="Dealer Revenue Group">
     </a>
-    <a class="nav-cta" href="#" onclick="openCTAModal(event)">Get Started</a>
+    <a class="nav-cta" href="#" onclick="openCTAModal(event)">Free AI Audit</a>
   </nav>
 
   <!-- ── HERO ─────────────────────────────── -->
@@ -76,7 +76,7 @@
       <p>ClaimSmith™ recovers the advertising co-op funds your business is already entitled to — across every department, fully managed by DRG. Ad Expense Tracking delivers executive clarity on where every marketing dollar is going, so your leadership team stops guessing and starts growing. Narrative Monitor tracks what AI says about your business when buyers are ready to decide — and delivers best practices and organic strategies to improve how you show up in AI-generated search results.</p>
       <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Any brand. Any market. We handle the details.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#" onclick="openCTAModal(event)">Schedule a Review</a>
+        <a class="btn-primary" href="#" onclick="openCTAModal(event)">Get your free AI Visibility Audit</a>
         <a class="btn-outline" href="#services">See What We Do</a>
       </div>
       <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
@@ -179,7 +179,7 @@
             <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#7c5cbf;margin-bottom:.4rem">AI Visibility Strategy — included</div>
             <p style="margin:0;font-size:.81rem;color:var(--text-muted);line-height:1.6">Every subscription includes curated best practices and organic growth strategies to improve your AI search relevance — so more buyers find you first when they ask ChatGPT, Google AI, Claude, Bing, or Perplexity where to go.</p>
           </div>
-          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'narrative_monitor')">Get Started →</a>
+          <a href="#" class="early-access-btn" onclick="openCTAModal(event,'ai_visibility_audit')">Get your free AI Visibility Audit →</a>
         </div>
 
       </div>
@@ -336,8 +336,8 @@
 
         <!-- ── GET STARTED PANEL ── -->
         <div class="cta-panel active" id="panelStart">
-          <h2 class="cta-headline">Let's find your revenue.</h2>
-          <p class="cta-sub">Tell us a bit about your business and we'll reach out within one business day — no pressure, no obligation.</p>
+          <h2 class="cta-headline">Get your free AI Visibility Audit.</h2>
+          <p class="cta-sub">See exactly what ChatGPT, Gemini, Claude &amp; Perplexity say about your business vs. your top competitor. Free, no obligation — we'll email your one-page report.</p>
           <form id="ctaFormStart">
             <div class="cta-row">
               <div class="cta-field">
@@ -361,13 +361,23 @@
             </div>
             <div class="cta-row">
               <div class="cta-field">
-                <label for="cs-oem">Brand(s) / Industry</label>
-                <input type="text" id="cs-oem" placeholder="BMW, Toyota, Healthcare…">
+                <label for="cs-oem">Business type / Brand</label>
+                <input type="text" id="cs-oem" placeholder="BMW dealer, med spa, law firm…">
+              </div>
+              <div class="cta-field">
+                <label for="cs-city">City &amp; State</label>
+                <input type="text" id="cs-city" placeholder="Madison, WI">
+              </div>
+            </div>
+            <div class="cta-row">
+              <div class="cta-field">
+                <label for="cs-competitor">Your top competitor <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cs-competitor" placeholder="Who do you lose customers to?" required>
               </div>
               <div class="cta-field">
                 <label for="cs-service">I'm interested in…</label>
                 <select id="cs-service">
-                  <option value="">Select a service</option>
+                  <option value="ai_visibility_audit">Free AI Visibility Audit</option>
                   <option value="coop">ClaimSmith™ — Co-op Processing</option>
                   <option value="ad_tracking">Ad Expense Tracking</option>
                   <option value="narrative_monitor">Narrative Monitor (AI Visibility)</option>
@@ -382,15 +392,15 @@
                 <textarea id="cs-msg" placeholder="Number of locations, current marketing challenges, what brought you here…"></textarea>
               </div>
             </div>
-            <button type="submit" class="cta-submit" id="cs-submit-btn">Request a Review →</button>
+            <button type="submit" class="cta-submit" id="cs-submit-btn">Get my free AI Visibility Audit →</button>
             <p id="cs-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
               Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
             </p>
           </form>
           <div class="cta-success" id="cs-success">
             <div class="cta-success-icon">✓</div>
-            <h3>Got it — thanks!</h3>
-            <p>We'll review your info and reach out within one business day.</p>
+            <h3>Audit on the way!</h3>
+            <p>We'll email your AI Visibility Audit within one business day. Keep an eye on your inbox.</p>
           </div>
         </div>
 
@@ -501,15 +511,24 @@
     // ── Get Started form ──────────────────────────────────────────────────
     document.getElementById('ctaFormStart').addEventListener('submit', function(e) {
       e.preventDefault();
+      var svc  = document.getElementById('cs-service').value;
+      var city = document.getElementById('cs-city').value;
+      var comp = document.getElementById('cs-competitor').value;
+      var note = document.getElementById('cs-msg').value;
+      // Fold the audit inputs into the message so DRG has everything to run the audit
+      var auditLine = '[AI AUDIT] business="' + document.getElementById('cs-biz').value +
+                      '" type="' + document.getElementById('cs-oem').value +
+                      '" city="' + city + '" competitor="' + comp + '"';
+      var message = auditLine + (note ? ('\n' + note) : '');
       submitForm({
         name:       document.getElementById('cs-name').value,
         dealership: document.getElementById('cs-biz').value,
         email:      document.getElementById('cs-email').value,
         phone:      document.getElementById('cs-phone').value,
         oem:        document.getElementById('cs-oem').value,
-        service:    document.getElementById('cs-service').value,
-        message:    document.getElementById('cs-msg').value,
-        source:     'get_started_modal',
+        service:    svc,
+        message:    message,
+        source:     svc === 'ai_visibility_audit' ? 'audit_request' : 'get_started_modal',
       }, 'cs-submit-btn', 'cs-error', 'ctaFormStart', 'cs-success');
     });
 
