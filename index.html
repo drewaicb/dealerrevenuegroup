@@ -81,10 +81,10 @@
       <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Any brand. Any market. We handle the details.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#" onclick="openCTAModal(event)">Get your free AI Visibility Audit</a>
-        <a class="btn-outline" href="#services">See What We Do</a>
+        <a class="btn-outline" href="#" onclick="openQuestionModal(event)">Talk to someone</a>
       </div>
       <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
-        Just browsing? <a href="#" onclick="openQuestionModal(event)" style="color:var(--gold);font-weight:600;text-decoration:none;">Have a question →</a>
+        Prefer to explore first? <a href="#services" style="color:var(--gold);font-weight:600;text-decoration:none;">See what we do →</a>
       </p>
     </div>
   </section>
@@ -174,6 +174,52 @@
           <a href="#" class="early-access-btn" onclick="openCTAModal(event,'ai_visibility_audit')">Get your free AI Visibility Audit →</a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INDUSTRY EXAMPLES (Narrative Monitor) ── -->
+  <section id="industries">
+    <div class="section-inner">
+      <div class="section-label">Narrative Monitor · Any Industry</div>
+      <h2 class="section-title">Your customers ask AI<br>before they ask you</h2>
+      <p class="section-sub">Whatever you sell, your next customer is probably asking ChatGPT, Google AI, or Perplexity for a recommendation first. Narrative Monitor works for any business — here's what that looks like across industries.</p>
+
+      <div class="industry-grid">
+        <div class="industry-card">
+          <div class="industry-name">Auto Dealership</div>
+          <div class="industry-q">Who has the best BMW service near me?</div>
+          <p>See which dealer the AI models recommend — and whether it's you or the store across town.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-name">Med Spa &amp; Healthcare</div>
+          <div class="industry-q">Best place for that treatment in my city?</div>
+          <p>Catch the outdated reviews and forum threads shaping AI answers before a patient does.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-name">Legal &amp; Professional Services</div>
+          <div class="industry-q">Most reputable attorney in town for this?</div>
+          <p>Know whether AI is quietly sending high-intent clients to a competitor instead of you.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-name">Restaurant &amp; Hospitality</div>
+          <div class="industry-q">Where should I book for a special night out?</div>
+          <p>Spot the reviews and Reddit chatter driving what AI recommends — and respond early.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-name">Home Services</div>
+          <div class="industry-q">Most trusted contractor company nearby?</div>
+          <p>Track your reputation across five AI models plus Reddit in one weekly report.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-name">Retail &amp; Multi-Location</div>
+          <div class="industry-q">Best store for this near me?</div>
+          <p>See how each of your locations shows up when buyers ask AI where to go.</p>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="margin-top:2.25rem">
+        <a class="btn-primary" href="#" onclick="openCTAModal(event,'ai_visibility_audit')">See what AI says about your business →</a>
       </div>
     </div>
   </section>
@@ -351,7 +397,7 @@
       <div class="cta-modal-top">
         <div class="cta-tabs">
           <button class="cta-tab active" id="tabBtnStart" onclick="switchCTATab('start')">Get Started</button>
-          <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Have a Question?</button>
+          <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Talk to Someone</button>
         </div>
         <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
       </div>
@@ -428,10 +474,10 @@
           </div>
         </div>
 
-        <!-- ── QUESTION PANEL ── -->
+        <!-- ── QUESTION / TALK TO SOMEONE PANEL ── -->
         <div class="cta-panel" id="panelQuestion">
-          <h2 class="cta-headline">Have a Question?</h2>
-          <p class="cta-sub">Send us a quick note and we'll get back to you within one business day.</p>
+          <h2 class="cta-headline">Talk to someone.</h2>
+          <p class="cta-sub">Prefer a real conversation over a sign-up form? Send a note or ask us to call you — a DRG operator (not a sales rep) will get back to you within one business day. Available Mon–Fri, 8am–6pm CT.</p>
           <form id="ctaFormQuestion">
             <div class="cta-row">
               <div class="cta-field">
@@ -443,21 +489,35 @@
                 <input type="email" id="cq-email" placeholder="jane@example.com" required autocomplete="email">
               </div>
             </div>
-            <div class="cta-row full">
+            <div class="cta-row">
               <div class="cta-field">
-                <label for="cq-msg">Your Question <span style="color:#e53e3e">*</span></label>
-                <textarea id="cq-msg" placeholder="What would you like to know?" required style="min-height:100px"></textarea>
+                <label for="cq-phone">Phone <span style="font-weight:500;color:var(--text-muted)">(if you'd like a callback)</span></label>
+                <input type="tel" id="cq-phone" placeholder="(608) 555-0100" autocomplete="tel">
+              </div>
+              <div class="cta-field">
+                <label for="cq-contact">Best way to reach you</label>
+                <select id="cq-contact">
+                  <option value="either">Email or phone — either is fine</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone call</option>
+                </select>
               </div>
             </div>
-            <button type="submit" class="cta-submit" id="cq-submit-btn">Send Question →</button>
+            <div class="cta-row full">
+              <div class="cta-field">
+                <label for="cq-msg">What's on your mind? <span style="color:#e53e3e">*</span></label>
+                <textarea id="cq-msg" placeholder="A question, what you're trying to fix, or just &quot;give me a call&quot;…" required style="min-height:100px"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="cta-submit" id="cq-submit-btn">Send &amp; request a reply →</button>
             <p id="cq-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
               Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
             </p>
           </form>
           <div class="cta-success" id="cq-success">
             <div class="cta-success-icon">✓</div>
-            <h3>Message sent!</h3>
-            <p>We'll get back to you within one business day.</p>
+            <h3>Got it — we'll be in touch.</h3>
+            <p>A DRG operator will reach out within one business day, your preferred way.</p>
           </div>
         </div>
 
@@ -556,15 +616,21 @@
       }, 'cs-submit-btn', 'cs-error', 'ctaFormStart', 'cs-success');
     });
 
-    // ── Question form ─────────────────────────────────────────────────────
+    // ── Question / Talk-to-someone form ───────────────────────────────────
     document.getElementById('ctaFormQuestion').addEventListener('submit', function(e) {
       e.preventDefault();
+      var phone   = document.getElementById('cq-phone').value;
+      var prefEl  = document.getElementById('cq-contact');
+      var pref    = prefEl ? prefEl.value : '';
+      var note    = document.getElementById('cq-msg').value;
+      var prefLine = pref ? ('[Preferred contact: ' + pref + (phone ? ', phone ' + phone : '') + ']\n') : '';
       submitForm({
         name:    document.getElementById('cq-name').value,
         email:   document.getElementById('cq-email').value,
-        message: document.getElementById('cq-msg').value,
+        phone:   phone,
+        message: prefLine + note,
         service: 'question',
-        source:  'question_modal',
+        source:  'talk_to_someone_modal',
       }, 'cq-submit-btn', 'cq-error', 'ctaFormQuestion', 'cq-success');
     });
   })();

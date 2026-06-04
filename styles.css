@@ -486,6 +486,55 @@ footer {
 
 footer a { color: var(--gold); text-decoration: none; }
 
+/* ── INDUSTRY EXAMPLES (Narrative Monitor) ── */
+#industries { background: var(--off-white); }
+
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.industry-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: box-shadow .2s, border-color .2s, transform .2s;
+}
+
+.industry-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.industry-name {
+  font-size: .72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--gold);
+  margin-bottom: .6rem;
+}
+
+.industry-q {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.45;
+  margin-bottom: .5rem;
+}
+
+.industry-q::before { content: '“'; }
+.industry-q::after  { content: '”'; }
+
+.industry-card p {
+  font-size: .86rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* ── NAV LINKS ───────────────────────────── */
 .nav-links {
   display: flex;
