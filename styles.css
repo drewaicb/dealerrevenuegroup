@@ -620,6 +620,192 @@ footer {
 
 footer a { color: var(--gold); text-decoration: none; }
 
+/* ── CTA MODAL ───────────────────────────── */
+.cta-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  background: rgba(10,22,40,0.76);
+  backdrop-filter: blur(5px);
+}
+
+.cta-overlay.open { display: flex; }
+
+.cta-modal {
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.24);
+  animation: ctaSlideIn .22s ease;
+}
+
+@keyframes ctaSlideIn {
+  from { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cta-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem .6rem;
+}
+
+.cta-tabs {
+  display: flex;
+  gap: .45rem;
+  flex-wrap: wrap;
+}
+
+.cta-tab,
+.cta-close {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cta-tab {
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  background: var(--off-white);
+  color: var(--text-muted);
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.cta-tab.active {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.cta-close {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.cta-close:hover {
+  background: var(--off-white);
+  color: var(--navy);
+}
+
+.cta-modal-body { padding: 0 1.4rem 1.4rem; }
+
+.cta-panel { display: none; }
+.cta-panel.active { display: block; }
+
+.cta-headline {
+  margin: 0 0 .35rem;
+  color: var(--navy);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.cta-sub {
+  margin: 0 0 1.1rem;
+  color: var(--text-muted);
+  font-size: .86rem;
+  line-height: 1.6;
+}
+
+.cta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+
+.cta-row.full { grid-template-columns: 1fr; }
+
+.cta-field label {
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--text);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.cta-field input,
+.cta-field select,
+.cta-field textarea {
+  width: 100%;
+  padding: .7rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--text);
+  font-family: inherit;
+  font-size: .88rem;
+  outline: none;
+}
+
+.cta-field input:focus,
+.cta-field select:focus,
+.cta-field textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+
+.cta-field textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.cta-submit {
+  width: 100%;
+  margin-top: .45rem;
+  padding: .78rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, opacity .2s;
+}
+
+.cta-submit:hover { background: var(--gold-light); }
+.cta-submit:disabled { opacity: .55; cursor: not-allowed; }
+
+.cta-success {
+  display: none;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.cta-success-icon {
+  color: var(--gold);
+  font-size: 2.6rem;
+  margin-bottom: .75rem;
+}
+
+.cta-success h3 {
+  color: var(--navy);
+  font-size: 1.1rem;
+  margin: 0 0 .5rem;
+}
+
+.cta-success p {
+  color: var(--text-muted);
+  font-size: .9rem;
+  margin: 0;
+}
+
 /* ── PRICING / PLANS ─────────────────────── */
 #pricing { background: var(--white); }
 
