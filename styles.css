@@ -79,6 +79,24 @@ nav {
   display: block;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.84);
+  font-size: .86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--gold-light); }
+
 .nav-cta {
   background: var(--gold);
   color: var(--navy);
@@ -222,7 +240,23 @@ nav {
   color: var(--text-muted);
 }
 
-.trust-item .icon { font-size: 1.1rem; }
+.trust-item .icon {
+  flex: 0 0 auto;
+}
+
+.metal-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(10,22,40,0.18);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.95) 0 12%, rgba(255,255,255,0.35) 13% 22%, transparent 23%),
+    linear-gradient(145deg, #f7f8fb 0%, #aab2c0 35%, #4d586a 68%, #d9dee7 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.75),
+    inset 0 -2px 4px rgba(10,22,40,0.24),
+    0 1px 3px rgba(10,22,40,0.16);
+}
 
 /* ── SECTIONS ────────────────────────────── */
 section {
@@ -332,6 +366,61 @@ section {
   margin-top: .05rem;
 }
 
+.compact-section {
+  background: var(--off-white);
+  padding-top: 4.25rem;
+  padding-bottom: 4.25rem;
+}
+
+.resources-section { background: var(--white); }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(10,22,40,0.05);
+}
+
+.resources-section .info-card { background: var(--off-white); }
+
+.info-card h3 {
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: .45rem;
+}
+
+.info-card p {
+  color: var(--text-muted);
+  font-size: .9rem;
+  line-height: 1.65;
+}
+
+.info-card.linked { transition: border-color .2s, transform .2s, box-shadow .2s; }
+.info-card.linked:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.section-note {
+  margin-top: 1rem;
+  max-width: 680px;
+  color: var(--text-muted);
+  font-size: .94rem;
+  line-height: 1.7;
+}
+
 /* ── WHY DRG ─────────────────────────────── */
 #why {
   background: var(--navy);
@@ -414,6 +503,50 @@ section {
   font-weight: 500;
 }
 
+.contact-wrap-simple { align-items: stretch; }
+
+.contact-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.contact-cta-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-cta-card h3 {
+  color: var(--navy);
+  font-size: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+.contact-cta-card p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.35rem;
+}
+
+.contact-actions {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+.btn-outline.dark {
+  color: var(--navy);
+  border-color: rgba(10,22,40,0.22);
+}
+
+.btn-outline.dark:hover {
+  color: var(--navy-light);
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
 .contact-form {
   background: var(--white);
   border: 1px solid var(--border);
@@ -471,6 +604,7 @@ section {
   transition: background .2s;
   font-family: inherit;
 }
+
 
 .form-submit:hover { background: var(--navy-light); }
 
