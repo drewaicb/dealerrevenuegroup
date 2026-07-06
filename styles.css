@@ -1116,6 +1116,13 @@ footer a { color: var(--gold); text-decoration: none; }
   margin-bottom: 1rem;
 }
 
+.article-byline {
+  font-size: .85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+.article-byline strong { color: var(--navy); font-weight: 700; }
+
 .article-lede {
   font-size: 1.15rem;
   color: var(--text-muted);
