@@ -62,6 +62,18 @@
       color: #fff;
     }
 
+    /* Honeypot — moved off-screen rather than display:none, which the better
+       bots know to skip. Real users never see or tab into it. */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     /* ── OEM logo strip ── */
     .oem-strip {
       background: var(--white);
@@ -472,6 +484,13 @@
           <h2 class="cta-headline">Get your free AI Visibility Audit.</h2>
           <p class="cta-sub">See exactly what ChatGPT, Gemini, Claude &amp; Perplexity say about your business vs. your top competitor. Free, no obligation — we'll email your one-page report.</p>
           <form id="ctaFormStart">
+            <!-- Honeypot: hidden from people, irresistible to bots. Server drops
+                 any submission that fills it. aria-hidden + tabindex keep it out
+                 of the way of screen readers and keyboard navigation. -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="cs-website">Website</label>
+              <input type="text" id="cs-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="cta-row">
               <div class="cta-field">
                 <label for="cs-name">Your Name <span style="color:#e53e3e">*</span></label>
@@ -493,13 +512,16 @@
               </div>
             </div>
             <div class="cta-row">
+              <!-- Both required: the audit cannot run without them. They set the
+                   questions we ask the AI ("best dentist in Madison") and anchor
+                   the review lookup to the right business. -->
               <div class="cta-field">
-                <label for="cs-oem">Business type / Brand</label>
-                <input type="text" id="cs-oem" placeholder="Retail shop, med spa, law firm…">
+                <label for="cs-oem">What you do <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cs-oem" placeholder="Dentist, HVAC, med spa, car dealer…" required>
               </div>
               <div class="cta-field">
-                <label for="cs-city">City &amp; State</label>
-                <input type="text" id="cs-city" placeholder="Madison, WI">
+                <label for="cs-city">City &amp; State <span style="color:#e53e3e">*</span></label>
+                <input type="text" id="cs-city" placeholder="Madison, WI" required>
               </div>
             </div>
             <div class="cta-row">
@@ -542,6 +564,10 @@
           <h2 class="cta-headline">Talk to someone.</h2>
           <p class="cta-sub">Prefer a real conversation over a sign-up form? Send a note or ask us to call you — a DRG operator (not a sales rep) will get back to you within one business day. Available Mon–Fri, 8am–6pm CT.</p>
           <form id="ctaFormQuestion">
+            <div class="hp-field" aria-hidden="true">
+              <label for="cq-website">Website</label>
+              <input type="text" id="cq-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="cta-row">
               <div class="cta-field">
                 <label for="cq-name">Your Name <span style="color:#e53e3e">*</span></label>
@@ -593,6 +619,18 @@
     var overlay = document.getElementById('ctaOverlay');
     var API     = 'https://portal.dealerrevenuegroup.com/api/contact';
 
+    // Stamped when the modal opens; sent as `elapsed` so the server can drop
+    // submissions returned faster than a human could type them. Nobody fills
+    // this form in under 3 seconds.
+    var openedAt = 0;
+    function elapsedSeconds() {
+      return openedAt ? (Date.now() - openedAt) / 1000 : 999;
+    }
+    function honeypot(id) {
+      var el = document.getElementById(id);
+      return el ? el.value : '';
+    }
+
     // ── GA4 event helper (safe if gtag is blocked / not loaded) ───────────
     function gaEvent(name, params) {
       if (typeof gtag === 'function') { gtag('event', name, params || {}); }
@@ -602,6 +640,7 @@
     window.openCTAModal = function(e, service) {
       if (e) e.preventDefault();
       gaEvent('cta_open', { service: service || 'general', form: 'start' });
+      openedAt = Date.now();
       switchCTATab('start');
       if (service) {
         var sel = document.getElementById('cs-service');
@@ -615,6 +654,7 @@
     window.openQuestionModal = function(e) {
       if (e) e.preventDefault();
       gaEvent('cta_open', { service: 'question', form: 'question' });
+      openedAt = Date.now();
       switchCTATab('question');
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -652,6 +692,15 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
+        if (res.status === 429) {
+          // Rate limited — tell them plainly rather than showing the generic
+          // "something went wrong", which would read as a bug on our end.
+          err.textContent = 'That\'s a few submissions in a row — give it a little while, or email info@dealerrevenuegroup.com and we\'ll pick it up from there.';
+          err.style.display = 'block';
+          btn.textContent = orig;
+          btn.disabled = false;
+          return false;
+        }
         if (!res.ok) throw new Error('server');
         document.getElementById(formId).style.display = 'none';
         document.getElementById(successId).style.display = 'block';
@@ -688,6 +737,8 @@
         source:     source,
         city:       city,
         competitor: comp,
+        website:    honeypot('cs-website'),
+        elapsed:    elapsedSeconds(),
       }, 'cs-submit-btn', 'cs-error', 'ctaFormStart', 'cs-success').then(function(ok) {
         if (ok) gaEvent('generate_lead', { service: svc, source: source, form: 'start' });
       });
@@ -708,6 +759,8 @@
         message: prefLine + note,
         service: 'question',
         source:  'talk_to_someone_modal',
+        website: honeypot('cq-website'),
+        elapsed: elapsedSeconds(),
       }, 'cq-submit-btn', 'cq-error', 'ctaFormQuestion', 'cq-success').then(function(ok) {
         if (ok) gaEvent('generate_lead', { service: 'question', source: 'talk_to_someone_modal', form: 'question' });
       });
