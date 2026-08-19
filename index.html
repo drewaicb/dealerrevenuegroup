@@ -131,7 +131,7 @@
       <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Any brand. Any market. We handle the details.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#contact" onclick="openCTAModal(event)">Get your free AI Visibility Audit</a>
-        <a class="btn-outline" href="#contact" onclick="openQuestionModal(event)">Talk to someone</a>
+        <a class="btn-outline" href="#contact" onclick="openQuestionModal(event)">Request a callback</a>
       </div>
       <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
         Prefer to explore first? <a href="#services" style="color:var(--gold);font-weight:600;text-decoration:none;">See what we do →</a>
@@ -452,6 +452,7 @@
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>info@dealerrevenuegroup.com</span></div>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>dealerrevenuegroup.com</span></div>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>Available Mon-Fri, 8am-6pm CT</span></div>
+          <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>Phone: by callback — leave your number and we'll call you</span></div>
         </div>
         <div class="contact-cta-card">
           <h3>Ready for a clearer view?</h3>
@@ -472,7 +473,7 @@
       <div class="cta-modal-top">
         <div class="cta-tabs">
           <button class="cta-tab active" id="tabBtnStart" onclick="switchCTATab('start')">Get Started</button>
-          <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Talk to Someone</button>
+          <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Request a Callback</button>
         </div>
         <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
       </div>
@@ -561,8 +562,8 @@
 
         <!-- ── QUESTION / TALK TO SOMEONE PANEL ── -->
         <div class="cta-panel" id="panelQuestion">
-          <h2 class="cta-headline">Talk to someone.</h2>
-          <p class="cta-sub">Prefer a real conversation over a sign-up form? Send a note or ask us to call you — a DRG operator (not a sales rep) will get back to you within one business day. Available Mon–Fri, 8am–6pm CT.</p>
+          <h2 class="cta-headline">Request a callback.</h2>
+          <p class="cta-sub">Leave your number and a DRG operator — not a sales rep — calls you back within one business day, Mon–Fri, 8am–6pm CT. Prefer email? Say so below and we'll write instead.</p>
           <form id="ctaFormQuestion">
             <div class="hp-field" aria-hidden="true">
               <label for="cq-website">Website</label>
@@ -580,7 +581,7 @@
             </div>
             <div class="cta-row">
               <div class="cta-field">
-                <label for="cq-phone">Phone <span style="font-weight:500;color:var(--text-muted)">(if you'd like a callback)</span></label>
+                <label for="cq-phone">Phone <span style="font-weight:500;color:var(--text-muted)">(the number we should call)</span></label>
                 <input type="tel" id="cq-phone" placeholder="(608) 555-0100" autocomplete="tel">
               </div>
               <div class="cta-field">
@@ -598,7 +599,7 @@
                 <textarea id="cq-msg" placeholder="A question, what you're trying to fix, or just &quot;give me a call&quot;…" required style="min-height:100px"></textarea>
               </div>
             </div>
-            <button type="submit" class="cta-submit" id="cq-submit-btn">Send &amp; request a reply →</button>
+            <button type="submit" class="cta-submit" id="cq-submit-btn">Request my callback →</button>
             <p id="cq-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
               Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
             </p>
@@ -765,6 +766,36 @@
         if (ok) gaEvent('generate_lead', { service: 'question', source: 'talk_to_someone_modal', form: 'question' });
       });
     });
+
+    // ── Deep links ────────────────────────────────────────────────────────
+    // Every CTA on the sub-pages points at /#contact, and a link in an email
+    // has no other way in. Without this they all just scrolled the homepage to
+    // the contact section and left the prospect hunting for a second button —
+    // which is where they were dropping out.
+    //   #audit             → intake, audit preselected (the link we email)
+    //   #coop #tracker #narrative → intake, that service preselected
+    //   #contact / #start  → intake (catch-all for the existing sub-page CTAs)
+    //   #talk / #callback  → callback request
+    function openFromHash(hash) {
+      var h = (hash || '').toLowerCase();
+      if (h === '#talk' || h === '#callback') { openQuestionModal(null); return true; }
+      // A hash may also name the service, so the tile the prospect clicked is
+      // the one already selected when the form opens.
+      var services = {
+        '#audit':     'ai_visibility_audit',
+        '#coop':      'coop',
+        '#tracker':   'ad_tracking',
+        '#narrative': 'narrative_monitor'
+      };
+      if (services[h])                        { openCTAModal(null, services[h]); return true; }
+      if (h === '#contact' || h === '#start') { openCTAModal(null);              return true; }
+      return false;
+    }
+    // Let the browser finish its own jump to the anchor first, or it scrolls
+    // the page out from under the modal we just opened.
+    if (location.hash) setTimeout(function() { openFromHash(location.hash); }, 120);
+    window.addEventListener('hashchange', function() { openFromHash(location.hash); });
+
   })();
   </script>
 

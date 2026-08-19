@@ -1238,6 +1238,9 @@ footer a { color: var(--gold); text-decoration: none; }
 
 @media (max-width: 600px) {
   .nav-links .nav-link { display: none; }
+  /* The intake form kept its rigid two-column grid on phones, squeezing every
+     field to ~150px. One field per row is legible and tappable. */
+  .cta-row { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {
