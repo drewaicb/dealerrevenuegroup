@@ -21,6 +21,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* Fixed nav would otherwise cover the top of any #anchor target. */
+[id] { scroll-margin-top: 88px; }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   color: var(--text);
@@ -38,7 +41,7 @@ nav {
   background: rgba(10,22,40,0.97);
   backdrop-filter: blur(10px);
   padding: 0 2rem;
-  height: 68px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,31 +55,39 @@ nav {
   text-decoration: none;
 }
 
-.nav-logo-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--gold);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: .95rem;
-  color: var(--navy);
-  letter-spacing: -.5px;
-}
-
-.nav-logo-text {
-  font-size: .95rem;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: .01em;
-}
-
+/* The mark ships pre-cropped and background-free (drg-mark-dark.png): the old
+   drg-logo-hires.png was a square, fully opaque lockup, so at nav size it read
+   as a white box with 2px-tall type inside it. Company name is live text now,
+   which also means it is no longer baked into a raster we have to re-cut. */
 .nav-logo-img {
   height: 40px;
   width: auto;
   display: block;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  min-width: 0;
+}
+
+.nav-logo-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: .055em;
+  white-space: nowrap;
+}
+
+.nav-logo-kicker {
+  font-size: .565rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .185em;
+  margin-top: 3px;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -656,6 +667,23 @@ footer {
 }
 
 footer a { color: var(--gold); text-decoration: none; }
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin-bottom: 1.1rem;
+}
+
+.footer-brand img { height: 32px; width: auto; display: block; }
+
+.footer-brand span {
+  font-size: .82rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.78);
+  letter-spacing: .055em;
+}
 
 /* ── CTA MODAL ───────────────────────────── */
 .cta-overlay {
@@ -1243,9 +1271,34 @@ footer a { color: var(--gold); text-decoration: none; }
   .cta-row { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 600px) {
+  /* The nav links are already hidden at this width, so the 2rem side padding and
+     the links' right margin are just squeezing the brand against the CTA. */
+  nav { padding: 0 1rem; }
+  .nav-links { margin-right: 0; }
+}
+
 @media (max-width: 520px) {
-  /* Hide wordmark on very small screens — keep DRG mark visible */
-  .nav-logo-text { display: none; }
+  /* Shed the kicker first, then tighten the name — the mark alone reads as an
+     unexplained glyph, so the company name is the last thing to go. */
+  .nav-logo-kicker { display: none; }
+  .nav-logo-name { font-size: .8rem; letter-spacing: .025em; }
+  .nav-logo-img { height: 34px; }
+  .nav-logo { gap: .55rem; }
   /* Tighten CTA button so it doesn't crowd the logo */
   .nav-cta { font-size: .78rem; padding: .4rem .85rem; }
+}
+
+@media (max-width: 430px) {
+  /* iPhone-class widths: the name still fits beside the CTA, but only just —
+     step the mark and the type down rather than dropping the company name. */
+  .nav-logo-img { height: 30px; }
+  .nav-logo-name { font-size: .72rem; letter-spacing: .02em; }
+  .nav-logo { gap: .45rem; }
+  .nav-cta { padding: .4rem .7rem; }
+}
+
+@media (max-width: 374px) {
+  /* Below this the name and the CTA genuinely cannot coexist; the CTA wins. */
+  .nav-logo-name { display: none; }
 }
