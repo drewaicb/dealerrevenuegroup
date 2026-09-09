@@ -43,7 +43,7 @@
     "areaServed": "US"
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260826" />
+  <link rel="stylesheet" href="styles.css?v=20260908" />
   <style>
     .early-access-btn {
       display: inline-block;
@@ -123,7 +123,7 @@
       <a class="nav-link" href="#services">Solutions</a>
       <a class="nav-link" href="#pricing">Packages</a>
       <a class="nav-link" href="/blog/">Resources</a>
-      <a class="nav-cta" href="#contact" onclick="openCTAModal(event)">Free AI Audit</a>
+      <a class="nav-cta" href="#contact" onclick="openCTAModal(event,'ai_visibility_audit')">Free AI Audit</a>
     </div>
   </nav>
 
@@ -131,15 +131,30 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">Built by operators — 35+ years of business and industry experience</div>
-      <h1>More Revenue. More Buyers.<br><span>Less Friction.</span></h1>
-      <p>ClaimSmith™ recovers the advertising co-op funds your business is already entitled to — across every department, fully managed by DRG. Narrative Monitor tracks what AI says about your business when buyers are ready to decide — and delivers best practices and organic strategies to improve how you show up in AI-generated search results. The Expense Tracker delivers executive clarity on where every dollar is going — advertising and OSS — so your leadership team stops guessing and starts growing.</p>
-      <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Any brand. Any market. We handle the details.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="#contact" onclick="openCTAModal(event)">Get your free AI Visibility Audit</a>
-        <a class="btn-outline" href="#contact" onclick="openQuestionModal(event)">Request a callback</a>
+      <h1>Three products.<br><span>Start with the one you need.</span></h1>
+      <p>DRG builds and runs three separate services. Each one is bought on its own, scoped on its own, and works without the other two — so you can start with the single problem in front of you instead of signing up for a program.</p>
+      <p style="margin-top:.75rem;font-size:.95rem;font-weight:500;color:var(--text-muted)">Pick the one that matches your problem. We will tell you if it is not a fit.</p>
+      <div class="hero-paths">
+        <a class="hero-path" href="#contact" onclick="openCTAModal(event,'coop')">
+          <span class="hero-path-name">ClaimSmith™</span>
+          <span class="hero-path-line">Co-op claims run for you — BMW &amp; MINI</span>
+          <span class="hero-path-cta">Request a workflow review →</span>
+        </a>
+        <a class="hero-path" href="#contact" onclick="openCTAModal(event,'ai_visibility_audit')">
+          <span class="hero-path-name">Narrative Monitor</span>
+          <span class="hero-path-line">What AI assistants say about your business</span>
+          <span class="hero-path-cta">Get the free audit →</span>
+        </a>
+        <a class="hero-path" href="#contact" onclick="openCTAModal(event,'ad_tracking')">
+          <span class="hero-path-name">Expense Tracker</span>
+          <span class="hero-path-line">Your DMS exports as one monthly report</span>
+          <span class="hero-path-cta">See a sample report →</span>
+        </a>
       </div>
       <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
-        Prefer to explore first? <a href="#services" style="color:var(--gold);font-weight:600;text-decoration:none;">See what we do →</a>
+        Not sure which? <a href="#contact" onclick="openQuestionModal(event)" style="color:var(--gold);font-weight:600;text-decoration:none;">Request a callback →</a>
+        &nbsp;·&nbsp;
+        <a href="#services" style="color:var(--gold);font-weight:600;text-decoration:none;">Compare all three →</a>
       </p>
     </div>
   </section>
@@ -149,7 +164,7 @@
     <div class="trust-bar-inner">
       <div class="trust-item"><span class="icon metal-dot"></span> 35+ Years Business Experience</div>
       <div class="trust-item"><span class="icon metal-dot"></span> 20+ Years General Manager Experience</div>
-      <div class="trust-item"><span class="icon metal-dot"></span> Any Brand, Any Industry</div>
+      <div class="trust-item"><span class="icon metal-dot"></span> Each Product Sold Separately</div>
       <div class="trust-item"><span class="icon metal-dot"></span> 30-Day Rolling Contracts</div>
       <div class="trust-item"><span class="icon metal-dot"></span> We Handle the Details</div>
     </div>
@@ -157,14 +172,12 @@
 
   <!-- ── VALUE STRIP ───────────────────────── -->
   <div class="oem-strip">
-    <div class="oem-strip-label">One partner. Three ways we grow your bottom line.</div>
+    <div class="oem-strip-label">Three products. Bought one at a time.</div>
     <div class="oem-tags">
-      <span class="oem-tag">Co-op Recovery</span>
-      <span class="oem-tag">Expense Tracker</span>
-      <span class="oem-tag">AI Visibility — GEO</span>
-      <span class="oem-tag">Any brand</span>
-      <span class="oem-tag">Any industry</span>
-      <span class="oem-tag">Any market</span>
+      <span class="oem-tag">ClaimSmith™ — BMW &amp; MINI co-op</span>
+      <span class="oem-tag">Narrative Monitor — AI visibility</span>
+      <span class="oem-tag">Expense Tracker — spend reporting</span>
+      <span class="oem-tag">30-day rolling contracts</span>
     </div>
   </div>
 
@@ -172,72 +185,82 @@
   <section id="services">
     <div class="section-inner">
       <div class="section-label">Our Solutions</div>
-      <h2 class="section-title">One partner.<br>Three ways we grow your bottom line.</h2>
-      <p class="section-sub">DRG helps businesses reduce friction, see what is working, and find revenue that is easy to miss. Co-op Recovery, AI Visibility — GEO, and the Expense Tracker work together to give your team clearer next steps without adding another complicated program.</p>
+      <h2 class="section-title">Three products.<br>Three separate decisions.</h2>
+      <p class="section-sub">These are not modules of a platform. Each one solves a different problem, is scoped and quoted on its own, and is onboarded on its own. Most customers start with one. If a second one ever makes sense for you, we will say so then — not now.</p>
 
       <div class="services-grid">
 
         <!-- ── ClaimSmith ── -->
         <div class="service-card">
           <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" /></svg></div>
-          <h3>Co-op Recovery <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">ClaimSmith™ · Patent Pending</small></h3>
-          <p>We handle eligible co-op claims end to end — from vendor document collection to portal submission to denial follow-up. You advertise. We help recover the dollars that are already available to your business.</p>
+          <h3>ClaimSmith™ <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">Co-op claim processing · Patent Pending</small></h3>
+          <p class="service-forwhom">For: BMW &amp; MINI dealers</p>
+          <p>Co-op claims are not hard. They are relentless — chasing vendors for itemized invoices and proof of performance, filing inside the 90-day window, and reworking denials before the resubmission window closes. ClaimSmith™ takes that whole job off your staff and gives it a named owner who does nothing else.</p>
           <ul class="service-features">
-            <li>Program support reviewed case by case so claims stay accurate</li>
-            <li>Pre-approval submissions (TV, radio, digital, events)</li>
-            <li>Direct vendor document collection — no chasing on your end</li>
-            <li>Portal workflow experience including Papirfly &amp; BrandMaster</li>
-            <li>Monthly reporting and fund expiration alerts</li>
+            <li><span><strong>Your people stop chasing paperwork.</strong> We request invoices and proofs directly from your vendors</span></li>
+            <li><span><strong>Someone owns the follow-through.</strong> Denials get reworked and refiled inside the window — the step that usually gets dropped</span></li>
+            <li>Pre-approvals filed where the program requires them (broadcast, digital, events)</li>
+            <li>Every claim tracked from submission to payment, with fund-expiration alerts</li>
             <li>7-year audit-ready document storage</li>
           </ul>
-          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'coop')">Get Started →</a>
+          <div class="service-scope">
+            <div class="service-scope-row"><span class="scope-tag scope-live">Operational today</span> BMW and MINI retail co-op, filed through the BrandMaster / Papirfly dealer marketing portal. This is the program we run every week.</div>
+            <div class="service-scope-row"><span class="scope-tag scope-next">On the roadmap</span> Other franchise brands. We are validating program rules one brand at a time and will not claim a portal we have not worked in. Ask us where your brand stands.</div>
+          </div>
+          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'coop')">Request a BMW/MINI co-op workflow review →</a>
           <a href="/claimsmith/" class="early-access-btn" style="margin-left:.5rem">Learn more →</a>
         </div>
 
         <!-- ── Narrative Monitor ── -->
         <div class="service-card">
           <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg></div>
-          <h3>Narrative Monitor <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">GEO — Generative Engine Optimization</small></h3>
-          <p>ChatGPT, Claude, Gemini, Perplexity, and Grok are now the first stop for customers researching businesses. Narrative Monitor tells you exactly what those models say about you — and what Reddit says — so you can control your story before a competitor does.</p>
+          <h3>Narrative Monitor <small style="font-size:.72rem;font-weight:500;color:var(--text-muted)">AI visibility · GEO</small></h3>
+          <p class="service-forwhom">For: any local business, automotive or not</p>
+          <p>Customers now ask ChatGPT, Claude, Gemini, Perplexity, and Grok for a recommendation before they call anyone. Narrative Monitor asks those assistants the questions your customers ask, and reports back what they actually said about you — in their words.</p>
           <ul class="service-features">
-            <li>See exactly what AI says about your business when buyers ask where to go</li>
-            <li>Know when AI recommends a competitor instead of you — and which one</li>
-            <li>A ranked fix list each week: what to do, and why it moves your score</li>
-            <li>Delivered to your inbox weekly, with a monthly progress recap</li>
-            <li>Any business, any market — automotive, retail, healthcare, hospitality &amp; more</li>
+            <li>Whether AI describes your business accurately — and where it is wrong or out of date</li>
+            <li>Whether you get named when someone asks for a recommendation in your category</li>
+            <li>Which competitors get named instead, and how the assistants describe them</li>
+            <li>A ranked list of what to address next, based on your own results rather than a generic checklist</li>
+            <li>Configured to your questions, your competitors, and your market — automotive or not</li>
           </ul>
-          <div style="margin-top:1rem;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)">Two ways to subscribe</div>
-          <div style="margin-top:.5rem;padding:.75rem .85rem;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0">
-            <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#475569;margin-bottom:.35rem">Standard</div>
-            <p style="margin:0;font-size:.81rem;color:var(--text-muted);line-height:1.6">Your visibility across ChatGPT, Claude, Gemini &amp; Perplexity — including when AI names a competitor instead of you. How you show up for each buyer question, the actual sentences AI wrote about you, and a ranked fix list that says what to do and why it moves your score.</p>
+          <div class="nm-offer nm-offer-free">
+            <div class="nm-offer-label">Free · one-time audit</div>
+            <p class="nm-offer-body"><strong>Free AI Visibility Audit.</strong> A one-time, point-in-time look at how AI describes your business today, against one competitor you name. One report, delivered by email. No subscription, no card, no obligation — and no weekly tracking.</p>
           </div>
-          <div style="margin-top:.5rem;padding:.75rem .85rem;background:rgba(245,243,255,.7);border-radius:8px;border:1px solid #e0d9ff">
-            <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#7c5cbf;margin-bottom:.35rem">Pro</div>
-            <p style="margin:0;font-size:.81rem;color:var(--text-muted);line-height:1.6">Everything in Standard, plus Grok as a 5th engine. A Google review head-to-head — your star rating and review count against the competitors you name; up to 6 competitors, each graded Strong / Moderate / Low threat with the next move for each; where AI is getting its answer across 16 sources; and weekly Reddit threads about you with direct links.</p>
+          <div class="nm-offer nm-offer-paid">
+            <div class="nm-offer-label">Paid · weekly email report</div>
+            <p class="nm-offer-body"><strong>Narrative Monitor subscription.</strong> The comprehensive version: the same questions re-run every week across the assistants, scored and trended over time, with competitor coverage, the quoted AI language, a ranked action list, and a monthly recap. Standard $299/mo, Pro $399/mo — details and plan comparison on the product page.</p>
           </div>
-          <div style="margin-top:1rem;padding:.75rem .85rem;background:rgba(245,243,255,.7);border-radius:8px;border:1px solid #e0d9ff">
-            <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#7c5cbf;margin-bottom:.4rem">AI Visibility Strategy — included</div>
-            <p style="margin:0;font-size:.81rem;color:var(--text-muted);line-height:1.6">Every subscription includes curated best practices and organic growth strategies to improve your AI search relevance — so more buyers find you first when they ask ChatGPT, Claude, Gemini, Perplexity, or Grok where to go.</p>
-          </div>
-          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'ai_visibility_audit')">Get your free AI Visibility Audit →</a>
-          <a href="/narrative-monitor/" class="early-access-btn" style="margin-left:.5rem">Pricing &amp; details →</a>
+          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'ai_visibility_audit')">Get the free AI Visibility Audit →</a>
+          <a href="/narrative-monitor/" class="early-access-btn" style="margin-left:.5rem">Weekly report pricing →</a>
         </div>
 
         <!-- ── Expense Tracker ── -->
         <div class="service-card">
           <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" /></svg></div>
           <h3>Expense Tracker</h3>
-          <p>Expense control is critical to every dealership's success — but DMS reports and financial statements rarely give you the detail and clarity you need to act. They roll thousands of dollars into a handful of summary lines, and pulling them apart by vendor, department, and month means hours in spreadsheets every time you want a straight answer. Advertising you probably already have a feel for — those numbers cross your desk. Outside services are the blind spot: OSS bills get approved at the department level and rarely reach the GM at all, which is why that's so often where the opportunity is.</p>
-          <p>The Expense Tracker turns your existing exports into one clear picture of where the money goes — advertising and OSS by vendor, department, and month, with month-over-month and year-over-year trend built in, plus a co-op reconciliation that shows what you actually received against what you spent. No spreadsheets, no manual reconciliation — just the clarity to make decisions you can defend.</p>
-          <ul class="service-features">
-            <li>Advertising &amp; OSS spend in one branded report — summary dashboard up front, full line-item detail behind it</li>
-            <li>Broken out by brand, vendor, department, and month, with month-over-month and year-over-year trends</li>
-            <li>Co-op received vs. utilization reconciliation — unclaimed balances flagged</li>
-            <li>Delivered monthly to your DRG portal, with a copy emailed to your team</li>
-            <li>Works from your existing reporting exports — no CRM or accounting integration required</li>
-            <li>Included with ClaimSmith™</li>
-          </ul>
-          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'ad_tracking')">Get Started →</a>
+          <p class="service-forwhom">For: dealerships on CDK DRIVE</p>
+          <p>Advertising you probably have a feel for — those invoices cross your desk. Outside services are the blind spot: OSS bills get approved at the department level and rarely reach the GM at all. Both live in your DMS already, rolled into a handful of summary lines that take hours of spreadsheet work to pull apart.</p>
+
+          <div class="et-flow">
+            <div class="et-step">
+              <div class="et-step-label">1 · What you send</div>
+              <p>Your existing CDK DRIVE <strong>Account Detail</strong> exports — one variable file and one fixed file per brand, per month, as .xlsx. Drop them in your DRG folder. No DMS integration, no accounting-system connection, no new software for your team.</p>
+            </div>
+            <div class="et-step">
+              <div class="et-step-label">2 · What we do with them</div>
+              <p>Every line is matched to a clean vendor name and category, then organized by brand, department, and month — advertising and outside services separately. Repeat exports of the same month are de-duplicated so a re-pull never double-counts.</p>
+            </div>
+            <div class="et-step">
+              <div class="et-step-label">3 · What you get back</div>
+              <p>One branded Excel workbook each month: an executive summary up front, then spend by vendor and department, month-over-month and year-over-year comparisons, and a co-op utilization tab showing what you received against what you spent. Posted to your DRG portal on Google Drive, with the link emailed to the people you name.</p>
+            </div>
+          </div>
+
+          <p class="service-note">Available on its own. It is also included at no extra cost with ClaimSmith™, because the same records feed both — but you never have to buy one to get the other.</p>
+          <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'ad_tracking')">Request a sample-report walkthrough &amp; export-fit check →</a>
+          <a href="/expense-tracker/" class="early-access-btn" style="margin-left:.5rem">Learn more →</a>
         </div>
 
       </div>
@@ -352,30 +375,30 @@
   <section id="pricing">
     <div class="section-inner">
       <div class="section-label">Service Options</div>
-      <h2 class="section-title">Start with one service.<br>Bundle when it makes sense.</h2>
-      <p class="section-sub">Choose a single DRG service a la carte, or bundle into Growth or Pro when your team needs the full stack. Pricing is tailored by scope, service mix, and number of locations, so customers contact DRG for a fit review and quote.</p>
+      <h2 class="section-title">Buy one product.<br>Add another only if it earns it.</h2>
+      <p class="section-sub">Every DRG product is sold and priced on its own. Bundles exist for customers already running more than one — they are a billing convenience, not the recommended way to start. Narrative Monitor pricing is published; ClaimSmith™ and Expense Tracker are quoted after a short scope review.</p>
 
       <div class="pricing-grid">
 
         <!-- A La Carte -->
-        <div class="pricing-card">
-          <div class="plan-name">A La Carte</div>
-          <div class="plan-tagline">Start with the single service that solves your most pressing problem.</div>
+        <div class="pricing-card featured">
+          <div class="pricing-ribbon">How most customers start</div>
+          <div class="plan-name">Single Product</div>
+          <div class="plan-tagline">One product, scoped and onboarded on its own. No bundle, no commitment to the rest.</div>
           <ul class="plan-features">
-            <li>Co-op Recovery for eligible reimbursement programs</li>
-            <li>Expense Tracker for clearer spend visibility across advertising &amp; OSS</li>
-            <li>AI Visibility — GEO for how AI systems describe your business</li>
+            <li><strong>ClaimSmith™</strong> — BMW &amp; MINI co-op claims, run for you</li>
+            <li><strong>Narrative Monitor</strong> — weekly AI visibility report, $299–$399/mo</li>
+            <li><strong>Expense Tracker</strong> — monthly advertising &amp; OSS spend report</li>
             <li>Direct support from a DRG operator</li>
             <li>30-day rolling contract — cancel anytime</li>
           </ul>
-          <div class="plan-cta"><a class="btn-plan" href="#contact" onclick="openCTAModal(event)">Get started →</a></div>
+          <div class="plan-cta"><a class="btn-plan" href="#services">Compare the three →</a></div>
         </div>
 
         <!-- Growth (featured) -->
-        <div class="pricing-card featured">
-          <div class="pricing-ribbon">Most Popular</div>
+        <div class="pricing-card">
           <div class="plan-name">Growth</div>
-          <div class="plan-tagline">The core stack — recover co-op, see your spend, and own your AI narrative.</div>
+          <div class="plan-tagline">For customers already running ClaimSmith™ who want AI visibility added to the same invoice.</div>
           <ul class="plan-features">
             <li>ClaimSmith™ co-op recovery, fully managed</li>
             <li>Expense Tracker included</li>
@@ -390,7 +413,7 @@
         <!-- Pro -->
         <div class="pricing-card">
           <div class="plan-name">Pro</div>
-          <div class="plan-tagline">Expanded visibility and strategy for teams that need deeper market intelligence.</div>
+          <div class="plan-tagline">For multi-rooftop customers running all three, with deeper competitor coverage on the Narrative side.</div>
           <ul class="plan-features">
             <li>Everything in Growth</li>
             <li>Narrative Monitor Pro — deeper prompt coverage and competitor tracking</li>
@@ -405,7 +428,7 @@
 
       </div>
 
-      <p class="pricing-note">Packages are built around your services and locations, so pricing is provided after DRG reviews fit and scope.<br><a href="#contact" onclick="openQuestionModal(event)">Contact DRG for pricing →</a></p>
+      <p class="pricing-note">You do not need to choose a bundle to get started — pick the product that matches your problem and we will scope that one.<br><a href="#contact" onclick="openQuestionModal(event)">Ask DRG about pricing →</a></p>
     </div>
   </section>
 
@@ -424,7 +447,7 @@
           <span class="resource-more">Read the guide →</span>
         </a>
         <a class="resource-card" href="/blog/marketing-spend-visibility-before-increasing-budget/">
-          <div class="resource-tag">Ad Expense Tracking</div>
+          <div class="resource-tag">Expense Tracker</div>
           <h3>Why Marketing Spend Needs Better Visibility Before You Increase Budget</h3>
           <p>Adding budget to a campaign you can't fully see just scales the waste. Get clarity first — then grow with confidence.</p>
           <span class="resource-more">Read the guide →</span>
@@ -452,19 +475,21 @@
       <div class="contact-wrap contact-wrap-simple">
         <div class="contact-info">
           <div class="section-label">Get in Touch</div>
-          <h3>Let's find out what you're leaving on the table.</h3>
-          <p>A 30-minute review will show you where your business may be leaving revenue on the table — with no obligation and no sales pressure.</p>
+          <h3>Start with one product.</h3>
+          <p>A short conversation about the one product you are considering — what it does, what it needs from you, and whether it fits. No obligation, and no pitch for the other two.</p>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>info@dealerrevenuegroup.com</span></div>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>dealerrevenuegroup.com</span></div>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>Available Mon-Fri, 8am-6pm CT</span></div>
           <div class="contact-detail"><span class="contact-icon metal-dot"></span><span>Phone: by callback — leave your number and we'll call you</span></div>
         </div>
         <div class="contact-cta-card">
-          <h3>Ready for a clearer view?</h3>
-          <p>Use the same short intake flow from the top of the page. It keeps the page clean and routes your request straight to DRG.</p>
-          <div class="contact-actions">
-            <a class="btn-primary" href="#contact" onclick="openCTAModal(event)">Get your free AI Visibility Audit</a>
-            <a class="btn-outline dark" href="#contact" onclick="openQuestionModal(event)">Ask a question</a>
+          <h3>Which product are you asking about?</h3>
+          <p>Tell us which one and the form asks only what that product needs — nothing more. Your answer routes the request to the right place at DRG.</p>
+          <div class="contact-actions contact-actions-stack">
+            <a class="btn-primary" href="#contact" onclick="openCTAModal(event,'coop')">ClaimSmith™ — co-op workflow review</a>
+            <a class="btn-primary" href="#contact" onclick="openCTAModal(event,'ai_visibility_audit')">Narrative Monitor — free AI Visibility Audit</a>
+            <a class="btn-primary" href="#contact" onclick="openCTAModal(event,'ad_tracking')">Expense Tracker — sample report</a>
+            <a class="btn-outline dark" href="#contact" onclick="openQuestionModal(event)">Not sure — ask a question</a>
           </div>
         </div>
       </div>
@@ -477,7 +502,7 @@
 
       <div class="cta-modal-top">
         <div class="cta-tabs">
-          <button class="cta-tab active" id="tabBtnStart" onclick="switchCTATab('start')">Get Started</button>
+          <button class="cta-tab active" id="tabBtnStart" onclick="switchCTATab('start')">Product Inquiry</button>
           <button class="cta-tab" id="tabBtnQuestion" onclick="switchCTATab('question')">Request a Callback</button>
         </div>
         <button class="cta-close" id="ctaClose" aria-label="Close">×</button>
@@ -487,8 +512,8 @@
 
         <!-- ── GET STARTED PANEL ── -->
         <div class="cta-panel active" id="panelStart">
-          <h2 class="cta-headline">Get your free AI Visibility Audit.</h2>
-          <p class="cta-sub">See exactly what ChatGPT, Gemini, Claude &amp; Perplexity say about your business vs. your top competitor. Free, no obligation — we'll email your one-page report.</p>
+          <h2 class="cta-headline" id="cs-headline">Tell us which product.</h2>
+          <p class="cta-sub" id="cs-sub">Pick the product you are asking about and we will only ask for what that product needs.</p>
           <form id="ctaFormStart">
             <!-- Honeypot: hidden from people, irresistible to bots. Server drops
                  any submission that fills it. aria-hidden + tabindex keep it out
@@ -497,6 +522,22 @@
               <label for="cs-website">Website</label>
               <input type="text" id="cs-website" name="website" tabindex="-1" autocomplete="off">
             </div>
+
+            <!-- The product selector drives the rest of the form, so it comes
+                 first. Its value is what gets attributed to the lead. -->
+            <div class="cta-row full">
+              <div class="cta-field">
+                <label for="cs-service">What are you asking about? <span style="color:#e53e3e">*</span></label>
+                <select id="cs-service">
+                  <option value="coop">ClaimSmith™ — BMW &amp; MINI co-op claim processing</option>
+                  <option value="ai_visibility_audit">Narrative Monitor — free AI Visibility Audit (one-time)</option>
+                  <option value="narrative_monitor">Narrative Monitor — weekly report subscription</option>
+                  <option value="ad_tracking">Expense Tracker — monthly spend reporting</option>
+                  <option value="unsure">Not sure yet — help me figure it out</option>
+                </select>
+              </div>
+            </div>
+
             <div class="cta-row">
               <div class="cta-field">
                 <label for="cs-name">Your Name <span style="color:#e53e3e">*</span></label>
@@ -513,55 +554,51 @@
                 <input type="email" id="cs-email" placeholder="jane@acmegroup.com" required autocomplete="email">
               </div>
               <div class="cta-field">
-                <label for="cs-phone">Phone</label>
+                <label for="cs-phone">Phone <span class="cta-optional">optional</span></label>
                 <input type="tel" id="cs-phone" placeholder="(608) 555-0100" autocomplete="tel">
               </div>
             </div>
-            <div class="cta-row">
-              <!-- Both required: the audit cannot run without them. They set the
-                   questions we ask the AI ("best dentist in Madison") and anchor
-                   the review lookup to the right business. -->
-              <div class="cta-field">
-                <label for="cs-oem">What you do <span style="color:#e53e3e">*</span></label>
-                <input type="text" id="cs-oem" placeholder="Dentist, HVAC, med spa, car dealer…" required>
+
+            <!-- Audit inputs. Only the free snapshot genuinely needs these — it
+                 cannot be produced without a category, a market, and a rival to
+                 compare against. Asking a co-op or Expense Tracker prospect to
+                 name a competitor before they can say hello is friction with no
+                 purpose, so this group is shown and required per product. -->
+            <div id="cs-audit-fields" hidden>
+              <div class="cta-row">
+                <div class="cta-field">
+                  <label for="cs-oem">What you do <span class="cs-req" style="color:#e53e3e">*</span></label>
+                  <input type="text" id="cs-oem" placeholder="Dentist, HVAC, med spa, car dealer…">
+                </div>
+                <div class="cta-field">
+                  <label for="cs-city">City &amp; State <span class="cs-req" style="color:#e53e3e">*</span></label>
+                  <input type="text" id="cs-city" placeholder="Madison, WI">
+                </div>
               </div>
-              <div class="cta-field">
-                <label for="cs-city">City &amp; State <span style="color:#e53e3e">*</span></label>
-                <input type="text" id="cs-city" placeholder="Madison, WI" required>
-              </div>
-            </div>
-            <div class="cta-row">
-              <div class="cta-field">
-                <label for="cs-competitor">Your top competitor <span style="color:#e53e3e">*</span></label>
-                <input type="text" id="cs-competitor" placeholder="Who do you lose customers to?" required>
-              </div>
-              <div class="cta-field">
-                <label for="cs-service">I'm interested in…</label>
-                <select id="cs-service">
-                  <option value="ai_visibility_audit">Free AI Visibility Audit</option>
-                  <option value="coop">ClaimSmith™ — Co-op Processing</option>
-                  <option value="ad_tracking">Expense Tracker</option>
-                  <option value="narrative_monitor">Narrative Monitor (AI Visibility)</option>
-                  <option value="multiple">Multiple Services</option>
-                  <option value="unsure">Not sure yet — tell me more</option>
-                </select>
+              <div class="cta-row full">
+                <div class="cta-field">
+                  <label for="cs-competitor">Your top competitor <span class="cs-req" style="color:#e53e3e">*</span></label>
+                  <input type="text" id="cs-competitor" placeholder="Who do you lose customers to?">
+                  <p class="cta-help" id="cs-competitor-help">The audit compares how AI describes you against one named rival, so we need someone to compare against.</p>
+                </div>
               </div>
             </div>
+
             <div class="cta-row full">
               <div class="cta-field">
-                <label for="cs-msg">Anything else we should know?</label>
-                <textarea id="cs-msg" placeholder="Number of locations, current marketing challenges, what brought you here…"></textarea>
+                <label for="cs-msg">Anything else we should know? <span class="cta-optional">optional</span></label>
+                <textarea id="cs-msg" placeholder="Number of rooftops, which brands, what prompted you to look…"></textarea>
               </div>
             </div>
-            <button type="submit" class="cta-submit" id="cs-submit-btn">Get my free AI Visibility Audit →</button>
+            <button type="submit" class="cta-submit" id="cs-submit-btn">Send my request →</button>
             <p id="cs-error" style="display:none;color:#c0392b;font-size:.82rem;margin:.6rem 0 0;text-align:center">
               Something went wrong. Email us at <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a>
             </p>
           </form>
           <div class="cta-success" id="cs-success">
             <div class="cta-success-icon">✓</div>
-            <h3>Audit on the way!</h3>
-            <p>We'll email your AI Visibility Audit within one business day. Keep an eye on your inbox.</p>
+            <h3 id="cs-success-title">Got it — we'll be in touch.</h3>
+            <p id="cs-success-body">We'll follow up within one business day. Keep an eye on your inbox.</p>
           </div>
         </div>
 
@@ -642,15 +679,87 @@
       if (typeof gtag === 'function') { gtag('event', name, params || {}); }
     }
 
+    // ── Per-product form shape ────────────────────────────────────────────
+    // One intake form, three buying paths. `audit` decides whether the AI
+    // snapshot inputs are shown at all; `require` decides whether they block
+    // submission. Only the free snapshot truly needs them — it cannot be
+    // produced without a category, a market, and a rival — so it is the only
+    // path that makes them mandatory.
+    var PRODUCTS = {
+      coop: {
+        headline: 'Request a BMW/MINI co-op workflow review.',
+        sub:      'Tell us how your store advertises and who files your claims today. We will walk your current co-op workflow and say plainly whether ClaimSmith\u2019s help is worth it.',
+        button:   'Request my workflow review \u2192',
+        audit: false, require: false
+      },
+      ai_visibility_audit: {
+        headline: 'Get your free AI Visibility Audit.',
+        sub:      'A one-time, point-in-time look at how ChatGPT, Claude, Gemini and Perplexity describe your business today versus one competitor you name. Emailed to you once. This is not the weekly subscription \u2014 no card, no obligation.',
+        button:   'Send my free audit \u2192',
+        audit: true, require: true
+      },
+      narrative_monitor: {
+        headline: 'Ask about the weekly Narrative Monitor report.',
+        sub:      'The paid subscription: the same questions re-run every week, scored and trended, with competitor coverage and a ranked action list. Tell us about your business and we will confirm fit and plan.',
+        button:   'Send my request \u2192',
+        audit: true, require: false
+      },
+      ad_tracking: {
+        headline: 'Request a sample report and an export-fit check.',
+        sub:      'We will walk you through a real (anonymised) monthly workbook, and check a sample of your own DMS account-detail export to confirm it is a format we can work from before you commit to anything.',
+        button:   'Request the walkthrough \u2192',
+        audit: false, require: false
+      },
+      unsure: {
+        headline: 'Tell us what you are trying to fix.',
+        sub:      'Describe the problem in your own words. If one of our three products fits it we will say which one \u2014 and if none of them do, we will say that too.',
+        button:   'Send my question \u2192',
+        audit: false, require: false
+      }
+    };
+
+    var AUDIT_IDS = ['cs-oem', 'cs-city', 'cs-competitor'];
+
+    function applyProduct(service) {
+      var cfg = PRODUCTS[service] || PRODUCTS.unsure;
+      document.getElementById('cs-headline').textContent   = cfg.headline;
+      document.getElementById('cs-sub').textContent        = cfg.sub;
+      document.getElementById('cs-submit-btn').textContent = cfg.button;
+
+      document.getElementById('cs-audit-fields').hidden = !cfg.audit;
+      AUDIT_IDS.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.required = !!(cfg.audit && cfg.require);
+      });
+      // The red asterisks have to agree with what actually blocks submission,
+      // or the form lies about what it wants.
+      Array.prototype.forEach.call(document.querySelectorAll('.cs-req'), function(el) {
+        el.style.display = (cfg.audit && cfg.require) ? '' : 'none';
+      });
+      var help = document.getElementById('cs-competitor-help');
+      if (help) {
+        help.textContent = cfg.require
+          ? 'The audit compares how AI describes you against one named rival, so we need someone to compare against.'
+          : 'Optional \u2014 it sharpens the report, but leave it blank if you would rather talk first.';
+      }
+    }
+
+    var svcSel = document.getElementById('cs-service');
+    if (svcSel) svcSel.addEventListener('change', function() { applyProduct(this.value); });
+
     // ── Open / Close ──────────────────────────────────────────────────────
     window.openCTAModal = function(e, service) {
       if (e) e.preventDefault();
       gaEvent('cta_open', { service: service || 'general', form: 'start' });
       openedAt = Date.now();
       switchCTATab('start');
-      if (service) {
-        var sel = document.getElementById('cs-service');
-        if (sel) sel.value = service;
+      var sel = document.getElementById('cs-service');
+      if (sel) {
+        // No service on the CTA means the visitor has not chosen a product yet;
+        // "not sure" is the honest default rather than silently attributing the
+        // lead to whichever option happens to sit first in the list.
+        sel.value = service && PRODUCTS[service] ? service : 'unsure';
+        applyProduct(sel.value);
       }
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -725,12 +834,21 @@
       var svc  = document.getElementById('cs-service').value;
       var city = document.getElementById('cs-city').value;
       var comp = document.getElementById('cs-competitor').value;
+      var oem  = document.getElementById('cs-oem').value;
       var note = document.getElementById('cs-msg').value;
-      // Fold the audit inputs into the message so DRG has everything to run the audit
-      var auditLine = '[AI AUDIT] business="' + document.getElementById('cs-biz').value +
-                      '" type="' + document.getElementById('cs-oem').value +
-                      '" city="' + city + '" competitor="' + comp + '"';
-      var message = auditLine + (note ? ('\n' + note) : '');
+      // The audit line only earns its place when there is something in it.
+      // On the co-op and Expense Tracker paths these fields are hidden, and a
+      // row of empty ="" pairs in the lead notification just buries the note
+      // the prospect actually wrote.
+      var message = note;
+      if (oem || city || comp) {
+        var auditLine = '[AI AUDIT] business="' + document.getElementById('cs-biz').value +
+                        '" type="' + oem +
+                        '" city="' + city + '" competitor="' + comp + '"';
+        message = auditLine + (note ? ('\n' + note) : '');
+      }
+      // Product attribution: `service` is what the prospect picked, and the
+      // audit source is what routes a snapshot request to audit.py downstream.
       var source = svc === 'ai_visibility_audit' ? 'audit_request' : 'get_started_modal';
       submitForm({
         name:       document.getElementById('cs-name').value,
@@ -746,7 +864,20 @@
         website:    honeypot('cs-website'),
         elapsed:    elapsedSeconds(),
       }, 'cs-submit-btn', 'cs-error', 'ctaFormStart', 'cs-success').then(function(ok) {
-        if (ok) gaEvent('generate_lead', { service: svc, source: source, form: 'start' });
+        if (!ok) return;
+        // Confirm the thing they actually asked for, not a generic audit.
+        var done = {
+          coop:                ['Request received.', 'We\u2019ll come back within one business day with what a BMW/MINI co-op workflow review would look like for your store.'],
+          ai_visibility_audit: ['Audit on the way!', 'We\u2019ll email your free, one-time AI Visibility Audit within one business day. Keep an eye on your inbox.'],
+          narrative_monitor:   ['Request received.', 'We\u2019ll follow up within one business day to confirm fit and which plan makes sense.'],
+          ad_tracking:         ['Request received.', 'We\u2019ll send a sample monthly workbook and tell you what we need to check your export format.'],
+          unsure:              ['Got it \u2014 we\u2019ll be in touch.', 'We\u2019ll read what you wrote and come back within one business day with which product fits, if any does.']
+        }[svc];
+        if (done) {
+          document.getElementById('cs-success-title').textContent = done[0];
+          document.getElementById('cs-success-body').textContent  = done[1];
+        }
+        gaEvent('generate_lead', { service: svc, source: source, form: 'start' });
       });
     });
 
@@ -787,10 +918,13 @@
       // A hash may also name the service, so the tile the prospect clicked is
       // the one already selected when the form opens.
       var services = {
-        '#audit':     'ai_visibility_audit',
-        '#coop':      'coop',
-        '#tracker':   'ad_tracking',
-        '#narrative': 'narrative_monitor'
+        '#audit':      'ai_visibility_audit',
+        '#snapshot':   'ai_visibility_audit',
+        '#coop':       'coop',
+        '#claimsmith': 'coop',
+        '#tracker':    'ad_tracking',
+        '#expense':    'ad_tracking',
+        '#narrative':  'narrative_monitor'
       };
       if (services[h])                        { openCTAModal(null, services[h]); return true; }
       if (h === '#contact' || h === '#start') { openCTAModal(null);              return true; }

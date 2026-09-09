@@ -1302,3 +1302,159 @@ footer a { color: var(--gold); text-decoration: none; }
   /* Below this the name and the CTA genuinely cannot coexist; the CTA wins. */
   .nav-logo-name { display: none; }
 }
+
+/* ── PRODUCT-PATH COMPONENTS ─────────────────────────────
+   Added for the one-product-at-a-time restructure: the hero
+   router, the per-product scope/flow blocks, and the form
+   affordances that go with a single intake form serving
+   three different buying paths. */
+
+/* Hero: three parallel entry points instead of one blended CTA */
+.hero-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .85rem;
+  margin-top: 1.75rem;
+}
+.hero-path {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.06);
+  text-decoration: none;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.hero-path:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.hero-path-name { font-size: 1rem; font-weight: 800; color: var(--white); letter-spacing: -.01em; }
+.hero-path-line { font-size: .84rem; color: rgba(255,255,255,.76); line-height: 1.5; }
+.hero-path-cta  { margin-top: .35rem; font-size: .8rem; font-weight: 700; color: var(--gold); }
+
+/* Who a product is actually for — stated before the pitch */
+.service-forwhom {
+  margin: 0 0 .7rem !important;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--navy-light);
+}
+
+/* Operational vs roadmap, kept visually distinct from feature claims */
+.service-scope { margin-top: 1rem; display: flex; flex-direction: column; gap: .5rem; }
+.service-scope-row {
+  font-size: .81rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding: .7rem .8rem;
+  background: var(--off-white);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.scope-tag {
+  display: inline-block;
+  margin-right: .4rem;
+  padding: .12rem .5rem;
+  border-radius: 999px;
+  font-size: .66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.scope-live { background: #dcfce7; color: #166534; }
+.scope-next { background: #e2e8f0; color: #475569; }
+
+/* Narrative Monitor: free snapshot vs paid subscription */
+.nm-offer {
+  margin-top: .6rem;
+  padding: .78rem .85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--off-white);
+}
+.nm-offer-paid { background: rgba(245,243,255,.7); border-color: #e0d9ff; }
+.nm-offer-label {
+  font-size: .69rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #475569;
+  margin-bottom: .35rem;
+}
+.nm-offer-paid .nm-offer-label { color: #7c5cbf; }
+.nm-offer-body { margin: 0 !important; font-size: .81rem; line-height: 1.6; color: var(--text-muted); }
+
+/* Expense Tracker: inputs → processing → deliverable */
+.et-flow { margin-top: 1rem; display: flex; flex-direction: column; gap: .55rem; }
+.et-step {
+  padding: .75rem .85rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy-light);
+  border-radius: var(--radius-sm);
+}
+.et-step-label {
+  font-size: .69rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy-light);
+  margin-bottom: .3rem;
+}
+.et-step p { margin: 0 !important; font-size: .81rem; line-height: 1.6; color: var(--text-muted); }
+.service-note {
+  margin-top: .9rem !important;
+  font-size: .79rem !important;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Form: say plainly what is optional, and why a field is being asked for */
+.cta-optional {
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.cta-help {
+  margin: .35rem 0 0;
+  font-size: .75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Contact card: one button per product */
+.contact-actions-stack { flex-direction: column; align-items: stretch; }
+.contact-actions-stack .btn-primary,
+.contact-actions-stack .btn-outline { width: 100%; text-align: center; }
+
+@media (max-width: 860px) {
+  .hero-paths { grid-template-columns: 1fr; gap: .6rem; }
+}
+
+/* .btn-outline is built for the dark homepage hero: white text on a
+   transparent background. The product-page hero (.ph-hero) is white, so the
+   secondary CTA there rendered white-on-white and read as missing entirely.
+   Give it the dark treatment wherever it sits on a light hero. */
+.ph-hero .btn-outline {
+  color: var(--navy);
+  border-color: rgba(10,22,40,0.22);
+}
+.ph-hero .btn-outline:hover {
+  color: var(--navy-light);
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+}
+
+/* .service-features li is a flex row (checkmark + text). A bare <strong>
+   would become a second flex item and get its own column, so bullets that
+   lead with a bold phrase wrap their content in a span. Belt and braces: */
+.service-features li > span { flex: 1; }
