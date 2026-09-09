@@ -1458,3 +1458,4 @@ footer a { color: var(--gold); text-decoration: none; }
    would become a second flex item and get its own column, so bullets that
    lead with a bold phrase wrap their content in a span. Belt and braces: */
 .service-features li > span { flex: 1; }
+.scope-need { background: #fef3c7; color: #92400e; }
