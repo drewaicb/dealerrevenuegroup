@@ -1389,6 +1389,7 @@ footer a { color: var(--gold); text-decoration: none; }
 }
 .nm-offer-paid .nm-offer-label { color: #7c5cbf; }
 .nm-offer-body { margin: 0 !important; font-size: .81rem; line-height: 1.6; color: var(--text-muted); }
+.nm-promo { margin: .6rem 0 0 !important; font-size: .78rem; font-weight: 700; line-height: 1.5; color: var(--navy); background: rgba(212,168,83,.14); border: 1px solid rgba(212,168,83,.45); border-radius: 6px; padding: .5rem .7rem; }
 
 /* Expense Tracker: inputs → processing → deliverable */
 .et-flow { margin-top: 1rem; display: flex; flex-direction: column; gap: .55rem; }
