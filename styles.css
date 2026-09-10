@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: 88px; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
@@ -55,12 +55,22 @@ nav {
   text-decoration: none;
 }
 
-/* The mark ships pre-cropped and background-free (drg-mark-dark.png): the old
-   drg-logo-hires.png was a square, fully opaque lockup, so at nav size it read
-   as a white box with 2px-tall type inside it. Company name is live text now,
-   which also means it is no longer baked into a raster we have to re-cut. */
+/* The official mark (drg-logo-official.png, 2026-09-10) is navy lettering drawn
+   on white, so on the navy nav it rides in a white chip rather than being
+   recoloured — the supplied artwork is used exactly as drawn. Chip padding plus
+   image height comes to the same 40px the previous knocked-out mark occupied.
+   Company name stays live text, so nav copy edits still need no re-cut. */
+.nav-logo-chip {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 5px 9px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .nav-logo-img {
-  height: 40px;
+  height: 30px;
   width: auto;
   display: block;
   flex-shrink: 0;
@@ -676,7 +686,15 @@ footer a { color: var(--gold); text-decoration: none; }
   margin-bottom: 1.1rem;
 }
 
-.footer-brand img { height: 32px; width: auto; display: block; }
+.footer-brand-chip {
+  background: var(--white);
+  border-radius: 6px;
+  padding: 4px 7px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-brand img { height: 24px; width: auto; display: block; }
 
 .footer-brand span {
   font-size: .82rem;
@@ -1283,7 +1301,7 @@ footer a { color: var(--gold); text-decoration: none; }
      unexplained glyph, so the company name is the last thing to go. */
   .nav-logo-kicker { display: none; }
   .nav-logo-name { font-size: .8rem; letter-spacing: .025em; }
-  .nav-logo-img { height: 34px; }
+  .nav-logo-img { height: 26px; }
   .nav-logo { gap: .55rem; }
   /* Tighten CTA button so it doesn't crowd the logo */
   .nav-cta { font-size: .78rem; padding: .4rem .85rem; }
@@ -1292,7 +1310,8 @@ footer a { color: var(--gold); text-decoration: none; }
 @media (max-width: 430px) {
   /* iPhone-class widths: the name still fits beside the CTA, but only just —
      step the mark and the type down rather than dropping the company name. */
-  .nav-logo-img { height: 30px; }
+  .nav-logo-img { height: 23px; }
+  .nav-logo-chip { padding: 4px 7px; }
   .nav-logo-name { font-size: .72rem; letter-spacing: .02em; }
   .nav-logo { gap: .45rem; }
   .nav-cta { padding: .4rem .7rem; }
