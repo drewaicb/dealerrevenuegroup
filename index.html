@@ -39,6 +39,7 @@
     "logo": "https://dealerrevenuegroup.com/drg-logo-official-light.png",
     "email": "info@dealerrevenuegroup.com",
     "telephone": "+1-608-218-4609",
+    "sameAs": ["https://www.linkedin.com/company/132314001/"],
     "description": "DRG recovers unclaimed advertising co-op funds (ClaimSmith™), monitors what AI assistants say about your business (Narrative Monitor), and delivers executive ad-spend reporting.",
     "areaServed": "US"
   }
@@ -154,8 +155,11 @@
           <span class="hero-path-cta">See how it works →</span>
         </a>
       </div>
-      <p style="margin:.85rem 0 0;font-size:.85rem;color:var(--text-muted)">
-        Not sure which? <a href="#contact" onclick="openQuestionModal(event)" style="color:var(--gold);font-weight:600;text-decoration:none;">Request a callback →</a>
+      <div class="hero-actions" style="margin-top:1.25rem">
+        <a class="btn-primary" href="#contact" onclick="openCTAModal(event,'ai_visibility_audit')">See what AI says about your business — free</a>
+      </div>
+      <p style="margin:.6rem 0 0;font-size:.85rem;color:var(--text-muted)">
+        A one-time AI Visibility Audit for any business, no subscription. Prefer to talk first? <a href="#contact" onclick="openQuestionModal(event)" style="color:var(--gold);font-weight:600;text-decoration:none;">Request a callback →</a>
         &nbsp;·&nbsp;
         <a href="#services" style="color:var(--gold);font-weight:600;text-decoration:none;">Compare all three →</a>
       </p>
@@ -231,6 +235,7 @@
             <li>Every claim tracked from submission to payment, with fund-expiration alerts</li>
             <li>7-year audit-ready document storage</li>
           </ul>
+          <p class="service-note">A southern Wisconsin BMW &amp; MINI dealer has filed <strong>58 co-op claims</strong> through ClaimSmith™ since March 2026 — 27 BMW, 31 MINI — for <strong>$73,490</strong> in co-op claimed.</p>
           <div class="service-scope">
             <div class="service-scope-row"><span class="scope-tag scope-live">Operational today</span> BMW and MINI retail co-op, filed through the BrandMaster / Papirfly dealer marketing portal. This is the program we run every week.</div>
             <div class="service-scope-row"><span class="scope-tag scope-need">What stays with you</span> Portal access, your choice of which fund a claim is filed against, and a quick answer when a vendor document or an approval is unclear. Aftersales co-op is submitted under your login by BMW/MINI rule — guided, but yours to send.</div>
@@ -282,6 +287,7 @@
           <a class="btn-outline dark" href="/narrative-monitor/#pricing">Pricing &amp; details</a>
         </div>
       </div>
+      <div>
       <div class="video-frame" aria-label="Narrative Monitor report video">
         <video
           controls
@@ -292,6 +298,12 @@
           <source src="assets/video/narrative-monitor-weekly-monitoring-v2.mp4" type="video/mp4">
           Your browser does not support embedded video.
         </video>
+      </div>
+      <details style="margin-top:.75rem;font-size:.85rem;color:var(--text-muted);line-height:1.6">
+        <summary style="cursor:pointer;font-weight:600">Video transcript</summary>
+        <p>Here's something most business owners haven't stopped to think about. When a customer wants to find you, they don't ask Google anymore. They ask AI.</p>
+        <p>They ask ChatGPT, Gemini, Perplexity, and maybe even Grok who to trust. And whatever those answers say about you is the story your next customer hears.</p>
+      </details>
       </div>
     </div>
   </section>
@@ -379,7 +391,7 @@
     <div class="section-inner">
       <div class="section-label">Service Options</div>
       <h2 class="section-title">Buy one product.<br>Add another only if it earns it.</h2>
-      <p class="section-sub">Every DRG product is sold and priced on its own. Bundles exist for customers already running more than one — they are a billing convenience, not the recommended way to start. Narrative Monitor pricing is published; ClaimSmith™ and Expense Tracker are quoted after a short scope review.</p>
+      <p class="section-sub">Every DRG product is sold and priced on its own. Bundles exist for customers already running more than one — they are a billing convenience, not the recommended way to start. Narrative Monitor is $299–$399/mo, ClaimSmith™ starts at $499/mo per brand, and Expense Tracker starts at $99/mo*. Your exact rate is confirmed after a short scope review.</p>
 
       <div class="pricing-grid">
 
@@ -390,8 +402,8 @@
           <div class="plan-tagline">One product, scoped and onboarded on its own. No bundle, no commitment to the rest.</div>
           <ul class="plan-features">
             <li><strong style="white-space:nowrap">Narrative Monitor</strong> — monthly AI visibility report, any industry, $299–$399/mo</li>
-            <li><strong>ClaimSmith™</strong> — BMW &amp; MINI co-op claims, run for you</li>
-            <li><strong style="white-space:nowrap">Expense Tracker</strong> — monthly advertising &amp; OSS spend report</li>
+            <li><strong>ClaimSmith™</strong> — BMW &amp; MINI co-op claims, run for you, from $499/mo per brand*</li>
+            <li><strong style="white-space:nowrap">Expense Tracker</strong> — monthly advertising &amp; OSS spend report, from $99/mo*</li>
             <li>Direct support from a DRG operator</li>
             <li>No long-term commitment — cancel any month</li>
           </ul>
@@ -430,7 +442,7 @@
 
       </div>
 
-      <p class="pricing-note">You do not need to be a dealership, and you do not need a bundle. Pick the product that matches your problem and we will scope that one — Narrative Monitor works for any business in any industry.<br><a href="#contact" onclick="openQuestionModal(event)">Ask DRG about pricing →</a></p>
+      <p class="pricing-note">You do not need to be a dealership, and you do not need a bundle. Pick the product that matches your problem and we will scope that one — Narrative Monitor works for any business in any industry.<br><span style="font-size:.85em">*Plus a one-time set-up fee.</span><br><a href="#contact" onclick="openQuestionModal(event)">Ask DRG about pricing →</a></p>
     </div>
   </section>
 
@@ -960,7 +972,7 @@
       <span>DEALER REVENUE GROUP</span>
     </div>
     <p><a href="#services">Solutions</a> &nbsp;·&nbsp; <a href="/blog/">Resources</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></p>
-    <p style="margin-top:.6rem">© 2026 Dealer Revenue Group, LLC &nbsp;·&nbsp; <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a> &nbsp;·&nbsp; <a href="tel:+16082184609">608-218-4609</a> &nbsp;·&nbsp; dealerrevenuegroup.com</p>
+    <p style="margin-top:.6rem">© 2026 Dealer Revenue Group, LLC &nbsp;·&nbsp; <a href="mailto:info@dealerrevenuegroup.com">info@dealerrevenuegroup.com</a> &nbsp;·&nbsp; <a href="tel:+16082184609">608-218-4609</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/132314001/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; dealerrevenuegroup.com</p>
   </footer>
 
 </body>
