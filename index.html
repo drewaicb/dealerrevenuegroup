@@ -253,11 +253,8 @@
           <p class="service-note">A BMW &amp; MINI dealer has filed <strong>58 co-op claims</strong> through ClaimSmith™ since March 2026 — 27 BMW, 31 MINI — for <strong>$73,490</strong> in co-op claimed.</p>
           <div class="service-scope">
             <div class="service-scope-row">
-              <span class="scope-tag scope-next">Partners wanted</span> BMW and MINI are running today. We are looking for co-op partners who carry these brands to build the next programs with:
-              <div class="partner-brands">
-                <a href="#contact" class="partner-brand" onclick="openPartnerBrand(event,'Subaru')">Subaru →</a>
-                <a href="#contact" class="partner-brand" onclick="openPartnerBrand(event,'Kia')">Kia →</a>
-              </div>
+              <span class="scope-tag scope-next">Partners wanted</span> BMW and MINI are running today. We are looking for co-op partners who carry other brands to build the next programs with.
+              <a href="#partner" class="partner-link" onclick="openPartnerForm(event)">Become a ClaimSmith™ partner →</a>
             </div>
           </div>
           <a href="#contact" class="early-access-btn" onclick="openCTAModal(event,'coop')">Request a co-op workflow review →</a>
@@ -618,6 +615,23 @@
               </div>
             </div>
 
+            <!-- ClaimSmith partner inputs. Shown only when the form is opened
+                 from the "Become a partner" link; applyProduct() hides them
+                 again if the visitor switches products. -->
+            <div id="cs-partner-fields" hidden>
+              <div class="cta-row full">
+                <div class="cta-field">
+                  <label for="cs-brand">Which brand(s) do you carry? <span style="color:#e53e3e">*</span></label>
+                  <input type="text" id="cs-brand" list="cs-brand-list" placeholder="Start typing your brand">
+                  <datalist id="cs-brand-list">
+                    <option value="Audi"><option value="Honda"><option value="Hyundai"><option value="Kia">
+                    <option value="Mercedes-Benz"><option value="Nissan"><option value="Volkswagen">
+                    <option value="Stellantis (Chrysler, Dodge, Jeep, Ram)">
+                  </datalist>
+                </div>
+              </div>
+            </div>
+
             <div class="cta-row full">
               <div class="cta-field">
                 <label for="cs-msg">Anything else we should know? <span class="cta-optional">optional</span></label>
@@ -754,8 +768,13 @@
 
     var AUDIT_IDS = ['cs-oem', 'cs-city', 'cs-competitor'];
 
+    var partnerMode = false;
+
     function applyProduct(service) {
       var cfg = PRODUCTS[service] || PRODUCTS.unsure;
+      partnerMode = false;
+      document.getElementById('cs-partner-fields').hidden = true;
+      document.getElementById('cs-brand').required = false;
       document.getElementById('cs-headline').textContent   = cfg.headline;
       document.getElementById('cs-sub').textContent        = cfg.sub;
       document.getElementById('cs-submit-btn').textContent = cfg.button;
@@ -812,13 +831,18 @@
       setTimeout(function() { document.getElementById('cs-name').focus(); }, 80);
     };
 
-    // ClaimSmith partner-brand links: same co-op intake, with the brand
-    // written into the message so the lead says which program they carry.
-    window.openPartnerBrand = function(e, brand) {
+    // ClaimSmith partner link: the co-op intake, plus the brand they carry.
+    // Sent as service "coop" so it routes like any co-op lead; the source
+    // marks it as a partner enquiry.
+    window.openPartnerForm = function(e) {
       openCTAModal(e, 'coop');
-      gaEvent('partner_brand_click', { brand: brand });
-      var msg = document.getElementById('cs-msg');
-      if (msg && !msg.value) msg.value = 'We carry ' + brand + ' and are interested in being a ClaimSmith co-op partner.';
+      gaEvent('cta_open', { service: 'coop', form: 'partner' });
+      partnerMode = true;
+      document.getElementById('cs-headline').textContent   = 'Become a ClaimSmith\u2122 partner.';
+      document.getElementById('cs-sub').textContent        = 'BMW and MINI are running today, and we are building the next brands with dealers who carry them. Tell us which brand you carry and we will be in touch about what a partnership looks like.';
+      document.getElementById('cs-submit-btn').textContent = 'Send my partner request \u2192';
+      document.getElementById('cs-partner-fields').hidden = false;
+      document.getElementById('cs-brand').required = true;
     };
 
     window.openQuestionModal = function(e) {
@@ -905,12 +929,18 @@
       // Product attribution: `service` is what the prospect picked, and the
       // audit source is what routes a snapshot request to audit.py downstream.
       var source = svc === 'ai_visibility_audit' ? 'audit_request' : 'get_started_modal';
+      var brand  = document.getElementById('cs-brand').value;
+      var isPartner = partnerMode;
+      if (isPartner) {
+        source  = 'claimsmith_partner';
+        message = '[CLAIMSMITH PARTNER] brand="' + brand + '"' + (message ? ('\n' + message) : '');
+      }
       submitForm({
         name:       document.getElementById('cs-name').value,
         dealership: document.getElementById('cs-biz').value,
         email:      document.getElementById('cs-email').value,
         phone:      document.getElementById('cs-phone').value,
-        oem:        document.getElementById('cs-oem').value,
+        oem:        isPartner ? brand : oem,
         service:    svc,
         message:    message,
         source:     source,
@@ -928,6 +958,7 @@
           ad_tracking:         ['Request received.', 'We\u2019ll be in touch to walk you through the monthly workbook and tell you what we need to check your export format.'],
           unsure:              ['Got it \u2014 we\u2019ll be in touch.', 'We\u2019ll read what you wrote and come back within one business day with which product fits, if any does.']
         }[svc];
+        if (isPartner) done = ['Partner request received.', 'Thanks \u2014 we\u2019ll be in touch within one business day about bringing ClaimSmith\u2122 to your brand.'];
         if (done) {
           document.getElementById('cs-success-title').textContent = done[0];
           document.getElementById('cs-success-body').textContent  = done[1];
@@ -981,6 +1012,7 @@
         '#expense':    'ad_tracking',
         '#narrative':  'narrative_monitor'
       };
+      if (h === '#partner') { openPartnerForm(null); return true; }
       if (services[h])                        { openCTAModal(null, services[h]); return true; }
       if (h === '#contact' || h === '#start') { openCTAModal(null);              return true; }
       return false;

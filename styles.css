@@ -1480,17 +1480,6 @@ footer a { color: var(--gold); text-decoration: none; }
 .service-features li > span { flex: 1; }
 .scope-need { background: #fef3c7; color: #92400e; }
 
-/* ClaimSmith partner-brand links */
-.partner-brands { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
-.partner-brand {
-  display: inline-block;
-  padding: .3rem .75rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--navy);
-  font-size: .78rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-.partner-brand:hover { border-color: var(--gold); color: var(--gold); }
+/* ClaimSmith partner link */
+.partner-link { display: inline-block; margin-top: .4rem; color: var(--navy); font-weight: 700; text-decoration: none; }
+.partner-link:hover { color: var(--gold); }
