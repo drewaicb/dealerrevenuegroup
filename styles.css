@@ -1494,3 +1494,14 @@ footer a { color: var(--gold); text-decoration: none; }
 /* ClaimSmith partner link */
 .partner-link { display: inline-block; margin-top: .4rem; color: var(--navy); font-weight: 700; text-decoration: none; }
 .partner-link:hover { color: var(--gold); }
+
+/* Our Solutions: two main products side by side, Expense Tracker as a
+   full-width row beneath them with its three steps laid out across */
+#services .services-grid { grid-template-columns: repeat(2, 1fr); }
+.service-card-wide { grid-column: 1 / -1; }
+.service-card-wide .et-flow { flex-direction: row; }
+.service-card-wide .et-step { flex: 1; }
+@media (max-width: 860px) {
+  #services .services-grid { grid-template-columns: 1fr; }
+  .service-card-wide .et-flow { flex-direction: column; }
+}
