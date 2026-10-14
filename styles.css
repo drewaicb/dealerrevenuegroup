@@ -1328,10 +1328,10 @@ footer a { color: var(--gold); text-decoration: none; }
    affordances that go with a single intake form serving
    three different buying paths. */
 
-/* Hero: three parallel entry points instead of one blended CTA */
+/* Hero: two main entry points, Expense Tracker as a thin full-width row under them */
 .hero-paths {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: .85rem;
   margin-top: 1.75rem;
 }
@@ -1354,6 +1354,17 @@ footer a { color: var(--gold); text-decoration: none; }
 .hero-path-name { font-size: 1rem; font-weight: 800; color: var(--white); letter-spacing: -.01em; }
 .hero-path-line { font-size: .84rem; color: rgba(255,255,255,.76); line-height: 1.5; }
 .hero-path-cta  { margin-top: .35rem; font-size: .8rem; font-weight: 700; color: var(--gold); }
+.hero-path-wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: .75rem;
+  padding: .6rem 1.05rem;
+}
+.hero-path-wide .hero-path-name { font-size: .9rem; }
+.hero-path-wide .hero-path-cta  { margin-top: 0; }
 
 /* Who a product is actually for — stated before the pitch */
 .service-forwhom {
